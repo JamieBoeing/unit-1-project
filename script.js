@@ -15,6 +15,7 @@ let question = []
         question: ""
         option:
         answer: 
+        theme: 
       }
       // add more questions
         question:
@@ -99,7 +100,7 @@ let question = []
     ],
     theme: "Sports"
   },
-  // level 6: Math
+  // level 7: Math
   {
     questions: [
       {
@@ -179,3 +180,7 @@ function handleAnswerClick(event) {
         }
     }
 }
+
+// call the displayQuestion function to start the game
+
+displayQuestion()
