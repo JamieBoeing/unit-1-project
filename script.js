@@ -64,3 +64,15 @@ function endTimer() {
     loadQuestion()
 }
 // function to handle answering a question 
+function answerQuestion(choice) {
+    const question = questionData[currentLevel -1].questions[currentQuestion]
+    const correctAnswer = question.answer
+
+    //check if the selected choice is correct
+    if (choice === correctAnswer) {
+        score++
+        displayScore()
+    } else {
+        return('Better Luck Next Time')
+    }
+}
