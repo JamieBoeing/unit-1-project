@@ -1,52 +1,106 @@
 
-document.addEventListener("DOMContentLoaded", function(){
+// Set up variables for tracking game state
+let currentLevel = 1;
+let currentQuestion = 0;
+let score = 0;
+let timeBonus = 0;
+let levelBonus = 0;
+let answers = [];
+let achievements = [];
 
+// Define question data as an empty array
+let questionData = [];
 
-// Define global variables for tracking game stats
-const questionEl = document.getElementById("question")
-const answerInputEl = document.getElementById("answer-input")
-const submitAnswerBtn = document.getElementById("answer-btn")
-const timerEl = document.getElementById("timer")
-const themeEl = document.getElementById("theme")
-const levelEl = document.getElementById("level")
-const scoreEl = Document.getElementById("score")
-const newGameBtn = Document.getElementById("new-game-btn")
-
-
-let currentQuestionIndex = 0
-let score = 0
-let timeLeft = 10
-let questions = []
-
-// fetch questions from the JSON file
-fetch("questions.json")
+// Load the question data from a JSON file
+function loadQuestionData() {
+  fetch('questions.json')
     .then(response => response.json())
     .then(data => {
-        questions = data
-        showQuestion()
+      questionData = data;
+      startGame();
     })
-    .catch(error => console.log(error))
-
-
-
-//functions
-function newGame() {
-    currentQuestionIndex = 0
-    score = 0
-    timeLeft = 10
-}
-// show a question
-function showQuestion() {
-    
+    .catch(error => {
+      console.log('Error loading question data:', error);
+    });
 }
 
+// Function to load the next question
+function loadQuestion() {
+  // Check if all questions in the current level have been answered
+  if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
+    // Move to the next level or end the game if all levels have been completed
+    if (currentLevel < questionData.length) {
+      currentLevel++;
+      currentQuestion = 0;
+      levelBonus += 10; // Add a bonus for completing a level
+      displayLevel();
+    } else {
+      endGame(); // End game if all levels have been completed
+      return;
+    }
+  }
+  
+  const question = questionData[currentLevel - 1].questions[currentQuestion];
+  // Load the question and answer options...
+}
 
-//check the answer
-function checkAnswer() {
+// Function to handle answering a question
+function answerQuestion(choice) {
+    const question = questionData[currentLevel - 1].questions[currentQuestion]
+    const correctAnswer = question.answer
+
+//check if selected choice is correct
+    if(choice === correctAnswer) {
+        score++
+        displayScore()
+        playCorrectSound()
+    } else {
+        playWrongSound()
+    }
+
+// Move to the next question
+currentQuestion++
+loadQuestion()
+}
+
+// Function to display the current level
+function displayLevel() {
+  const levelElement = document.getElementById("level");
+  levelElement.textContent = `Level ${currentLevel}`;
+}
+
+// Function to display the current score
+function displayScore() {
+  const scoreElement = document.getElementById("score");
+  scoreElement.textContent = score;
+}
+
+//Function to play the correct sound
+function playCorrectSound() {
 
 }
 
-//start the timer
-function startTimer() {
-    
+//Function to play the wrong sound
+function playWrongSound() {
+
 }
+
+// Function to start the game
+function startGame() {
+  //hide the intro screen and show the game screen
+ const introScreen = document.getElementById()
+ const gameScreen = document.getElementById()
+ introScreen.style.display = "none"
+ gameScreen.style.display = "block"
+
+ // Display the current level and score
+displayLevel()
+displayScore()
+
+// Load the first Question
+loadQuestion()
+
+}
+
+// Call the loadQuestionData function to start the game
+loadQuestionData();
