@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name ="viewport" content="width=device-width, initial-scale=1.0">
         <script defer src="script.js"></script>
+        <script src="questions.js"></script>
         <title>Multiple Choice Quiz Game</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
 <body>
-    <div id="intro-screen">
-        <h1>Title</h1>
-        <div id="start">
-       
+    <div class="container">
+        <div id="question-container" class="hide">
+        <div id="theme"></div>
+        <div id="level"></div>
+        <div id="question"></div>
+        <div id="answer-buttons" class="btn-grid">
+
+            <!--Answer buttons here-->
+        </div>
     </div>
-        
+    <div class="controls">
+        <div id="score">Score: 0</div>
+        <div id="timer">Time left: 10s</div>
+        <div id="achievement"></div>
+    </div>    
+    <button id="start-btn" class="start-btn btn">Start Quiz</button>
+    <button id="next-btn" class="next-btn btn hide">Next</button>
+    <div id="game-end" class="hide">
+        <h2>Game Over</h2>
+        <p id="final-score"></p>
+    </div>
+   </div>
+
+  
 </body>
 </html>

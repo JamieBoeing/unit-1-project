@@ -1,20 +1,25 @@
-// Define variables for tracking game stats
-let currentLevel = 1
-let currentQuestion = 1
-let score = 0
-let timeBonus =0
-let levelBonus = 0
-let answers = []
-let achievements = []
+// Define global variables for tracking game stats
+const questionContainer = document.getElementById('question-container')
+const questionEl = document.getElementById('question')
+const answerButtonsEl = document.getElementById('answer-buttons')
+const scoreEl = document.getElementById('score')
+const timerEl = document.getElementById('timer')
+const themeEl = document.getElementById('theme')
+const levelEl = document.getElementById('level')
+const startBtn = document.getElementById('start-btn')
+const nextBtn = document.getElementById('next-btn')
+const gameEndEl = document.getElementById('game-end')
+const finalScoreEl = document.getElementById('final-score')
+const achievementEl = document.getElementById('achievement')
 
-//define questions array
-let questionData = []
 
-//set up timer variables
-let startTime
-let endTime
-let timer
+let shuffledQuestion, currentQuestionIndex, score, timer, timeInterval
 
+//set up constants
+const correctBonus = 10
+const maxQuestions = 10
+
+//functions
 // question data from the JSON file
 function loadQuestionData() {
     fetch('questions.json')
@@ -75,4 +80,7 @@ function answerQuestion(choice) {
     } else {
         return('Better Luck Next Time')
     }
+    clearTimeout(timer)
+
+    const totalScore = score + timeBonus + levelBonus 
 }
