@@ -1,47 +1,52 @@
+
+document.addEventListener("DOMContentLoaded", function(){
+
+
 // Define global variables for tracking game stats
-const questionContainer = document.getElementById('question-container')
-const questionEl = document.getElementById('question')
-const answerBtnsEl = document.getElementById('answer-buttons')
-const scoreEl = document.getElementById('score')
-const timerEl = document.getElementById('timer')
-const themeEl = document.getElementById('theme')
-const levelEl = document.getElementById('level')
-const startBtn = document.getElementById('start-btn')
-const nextBtn = document.getElementById('next-btn')
-const gameEndEl = document.getElementById('game-end')
-const finalScoreEl = document.getElementById('final-score')
-const achievementEl = document.getElementById('achievement')
+const questionEl = document.getElementById("question")
+const answerInputEl = document.getElementById("answer-input")
+const submitAnswerBtn = document.getElementById("answer-btn")
+const timerEl = document.getElementById("timer")
+const themeEl = document.getElementById("theme")
+const levelEl = document.getElementById("level")
+const scoreEl = Document.getElementById("score")
+const newGameBtn = Document.getElementById("new-game-btn")
 
 
-let shuffledQuestion, currentQuestionIndex, score, timer, timeInterval
+let currentQuestionIndex = 0
+let score = 0
+let timeLeft = 10
+let questions = []
 
-//set up constants 
-const correctBonus = 10
-const maxQuestions = 10
+// fetch questions from the JSON file
+fetch("questions.json")
+    .then(response => response.json())
+    .then(data => {
+        questions = data
+        showQuestion()
+    })
+    .catch(error => console.log(error))
+
+
 
 //functions
-function startGame() {
-    shuffledQuestions = shuffledQuestions(questions)
+function newGame() {
     currentQuestionIndex = 0
     score = 0
-    timer 10
-    resetTimer()
-    setTimer()
-    setNextQuestion()
+    timeLeft = 10
+}
+// show a question
+function showQuestion() {
+    
 }
 
-function setTimer() {
-    timeSet = setTimer(() => {
-        timer--
-        timerEl.innerText =`Time Left: ${timer}s`
-        if (timer <= 0) {
-            clearTimer(timeInterval)
-            endGame()
-        }
-    }, 1000)
+
+//check the answer
+function checkAnswer() {
+
 }
 
-function resetTimer() {
-    clearTimer(timeInterval)
-    timerEl.innerText = `Time left: ${timer}s`
+//start the timer
+function startTimer() {
+    
 }
