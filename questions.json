@@ -112,6 +112,36 @@
         "options": ["William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain"],
         "answer": 0,
         "theme": "Art & Music"
+    },
+    {
+        "question": "What is the name of Harry's pet owl in the Harry Potter book series?",
+        "options": ["Hedwid", "Crookshanks", "Nagini", "Fawkes"],
+        "answer": 0,
+        "theme": "Pop Culture"
+    },
+    {
+        "question": "Which artist released the hit single 'Shape of You' in 2017",
+        "options": ["Justin Bieber", "Taylor Swift", "Ed Sheeran", "Rihanna"],
+        "answer": 2,
+        "theme": "Pop Culture"
+    },
+    {
+        "question": "Which actor portrayed Iron Man in the Marvel Cinematic Universe?",
+        "options": ["Chris Evans", "Chris Hemsworth", "Robert Downey Jr.", "Mark Ruffalo"],
+        "answer": 2,
+        "theme": "Pop Culture"
+    },
+    {
+        "question": "Who is the creator of the popular animated TV show 'The Simpsons'?",
+        "options": ["Seth MacFarlane", "Mike Judge", "Trey Parker", "Matt Groening"],
+        "answer": 3,
+        "theme": "Pop Culture"
+    },
+    {
+        "question": "Which film won the Best Picture award at the 2020 Academy Awards?",
+        "options": ["Parasite", "Joker", "1917", "The Shape of Water"],
+        "answer": 0,
+        "theme": "Pop Culture"
     }
   ]
   
