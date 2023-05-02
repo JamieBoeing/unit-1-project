@@ -10,10 +10,13 @@
     </head>
     <body>
         <div class="intro-screen">
-            <h1>Welcome to QuizBiz & the Quest for Knowledge</h1>
-         <button id="start-btn" class="start-btn btn">Start Quiz</button>
+            <h1>Welcome to QuizBiz</h1>
+            <h2> & the Quest for Knowledge</h2>
+            <p>Are you Ready to test your knowledge?</p>
+         <button id="start-btn">Start Quiz</button>
         </div>
-        <div id="game-screen">
+        <div id="game-screen" style="display: none;">
+            <h2 id="level"></h2>
             <div id="question-container">
                 <h2 id="question"></h2>
                 <div id="choices">
@@ -36,7 +39,7 @@
          <div id="achievement-container">
             <h3>Achievements:</h3>
             <ul id="achievements"></ul>
-        </div>
+            </div>
         </div>
         <div id="game-over-screen">
             <h1>Game Over</h1>

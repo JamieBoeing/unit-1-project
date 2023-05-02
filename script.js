@@ -74,14 +74,14 @@ loadQuestion()
 
 // Function to display the current level
 function displayLevel() {
-  const levelElement = document.getElementById("level")
-  levelElement.textContent = `Level ${currentLevel}`
+  const levelEl = document.getElementById("level")
+  levelEl.textContent = `Level: ${currentLevel}`
 }
 
 // Function to display the current score
 function displayScore() {
-  const scoreElement = document.getElementById("score")
-  scoreElement.textContent = `Score ${score}`
+  const scoreEl = document.getElementById("score")
+  scoreEl.textContent = `Score: ${score}`
 }
 
 //Function to play the correct sound
@@ -110,11 +110,5 @@ displayScore()
 
 // Load the first Question
 loadQuestion()
-
 }
 
-// Call the loadQuestionData function to start the game
-function endGame() {
-    // hide screen and end game
-    const gameScreen = document.getElementById("game-screen")
-}
