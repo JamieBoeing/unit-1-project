@@ -1,27 +1,27 @@
 
 // Set up variables for tracking game state
-let currentLevel = 1;
-let currentQuestion = 0;
-let score = 0;
-let timeBonus = 0;
-let levelBonus = 0;
-let answers = [];
-let achievements = [];
+let currentLevel = 1
+let currentQuestion = 0
+let score = 0
+let timeBonus = 0
+let levelBonus = 0
+let answers = []
+let achievements = []
 
 // Define question data as an empty array
-let questionData = [];
+let questionData = []
 
 // Load the question data from a JSON file
 function loadQuestionData() {
   fetch('questions.json')
     .then(response => response.json())
     .then(data => {
-      questionData = data;
-      startGame();
+      questionData = data
+      startGame()
     })
     .catch(error => {
-      console.log('Error loading question data:', error);
-    });
+      console.log('Error loading question data:', error)
+    })
 }
 
 // Function to load the next question
@@ -30,18 +30,27 @@ function loadQuestion() {
   if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
     // Move to the next level or end the game if all levels have been completed
     if (currentLevel < questionData.length) {
-      currentLevel++;
-      currentQuestion = 0;
-      levelBonus += 10; // Add a bonus for completing a level
-      displayLevel();
+      currentLevel++
+      currentQuestion = 0
+      levelBonus += 10 // Add a bonus for completing a level
+      displayLevel()
     } else {
-      endGame(); // End game if all levels have been completed
-      return;
+      endGame() // End game if all levels have been completed
+      return
     }
   }
   
-  const question = questionData[currentLevel - 1].questions[currentQuestion];
-  // Load the question and answer options...
+    // Load the question and answer options...
+  const question = questionData[currentLevel - 1].questions[currentQuestion]
+
+  const questionEl = document.getElementById("question")
+  questionEl.textContent = question.question
+
+  const choices = document.querySelectorAll(".choice")
+  choices.forEach((choice, index) => {
+    choice.textContent = question.options[index]
+    choice.addEventListener("click", () => answerQuestion(index))
+  })
 }
 
 // Function to handle answering a question
@@ -65,8 +74,8 @@ loadQuestion()
 
 // Function to display the current level
 function displayLevel() {
-  const levelElement = document.getElementById("level");
-  levelElement.textContent = `Level ${currentLevel}`;
+  const levelElement = document.getElementById("level")
+  levelElement.textContent = `Level ${currentLevel}`
 }
 
 // Function to display the current score
@@ -105,4 +114,7 @@ loadQuestion()
 }
 
 // Call the loadQuestionData function to start the game
-loadQuestionData();
+function endGame() {
+    // hide screen and end game
+    const gameScreen = document.getElementById("game-screen")
+}

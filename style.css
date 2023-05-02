@@ -1,0 +1,116 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+/* Intro screen */
+.intro-screen {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.start-btn {
+    background-color: #4caf50;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Game screen*/
+#game-screeen {
+    display: none;
+}
+
+#question-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.choice {
+    background-color: #43af50;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#timer {
+    font-size: 24px;
+}
+
+#score-container {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+#achievement-container {
+    margin-bottom: 20px;
+}
+
+/* Game over Scrren */
+#game-over-screen {
+    display: none;
+    text-align: center;
+}
+
+#play-again-btn {
+    background-color: #4caf50;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Achievements */
+.achievemnet {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    .intro-screen {
+        padding-top: 50px;
+    }
+
+    .start-btn, .choice {
+        font-size: 20px;
+        padding: 8px 16px
+    }
+    #timer {
+        font-size: 20px;
+    }
+
+    #play-again-btn {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
