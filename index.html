@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <meta name ="viewport" content="width=device-width, initial-scale=1.0">
         <script defer src="script.js"></script>
         <script src="questions.js"></script>
-        <title>Multiple Choice Quiz Game</title>
+        <title>QuizBiz</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
-<body>
-    <div class="container">
-        <div id="question-container" class="hide">
-        <div id="theme"></div>
-        <div id="level"></div>
-        <div id="question"></div>
-        <div id="answer-buttons" class="btn-grid">
-
-            <!--Answer buttons here-->
+    <body>
+        <div class="intro-screen">
+            <h1>Welcome to QuizBiz & the Quest for Knowledge</h1>
+         <button id="start-btn" class="start-btn btn">Start Quiz</button>
         </div>
-    </div>
-    <div class="controls">
-        <div id="score">Score: 0</div>
-        <div id="timer">Time left: 10s</div>
-        <div id="achievement"></div>
-    </div>    
-    <button id="start-btn" class="start-btn btn">Start Quiz</button>
-    <button id="next-btn" class="next-btn btn hide">Next</button>
-    <div id="game-end" class="hide">
-        <h2>Game Over</h2>
-        <p id="final-score"></p>
-    </div>
-   </div>
-
-  
-</body>
+        <div id="game-screen">
+            <div id="question-container">
+                <h2 id="question"></h2>
+                <div id="choices">
+                    <button class="choice" id="choice1"></button>
+                    <button class="choice" id="choice2"></button>
+                    <button class="choice" id="choice3"></button>
+                    <button class="choice" id="choice4"></button>
+            </div>
+        </div>
+        <div class="timer-container">
+            <div id="timer"></div>
+         </div>    
+        <div id="score-container">
+            <h3>Score: <span id="score"></span></h3>
+            <h3>Bonus Points: <span id="bonus-points"></span></h3>
+        </div>
+         <div id="achievement-container">
+            <h3>Achievements:</h3>
+            <ul id="achievements"></ul>
+        </div>
+        </div>
+        <div id="game-over-screen">
+            <h1>Game Over</h1>
+            <h2>Your Final Score was <span id="final-score"></span></h2>
+            <button id="play-again-btn">Play Again</button>
+        </div>
+        <audio id="correct-sound">
+            <source src="" type="">
+        </audio>
+        <audio id="wrong-sound">
+            <source src="" type="">
+        </audio>
+        <audio id="correct-sound">
+            <source src="" type="">
+        </audio>
+    </body>
 </html>

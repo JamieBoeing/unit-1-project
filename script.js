@@ -71,25 +71,27 @@ function displayLevel() {
 
 // Function to display the current score
 function displayScore() {
-  const scoreElement = document.getElementById("score");
-  scoreElement.textContent = score;
+  const scoreElement = document.getElementById("score")
+  scoreElement.textContent = `Score ${score}`
 }
 
 //Function to play the correct sound
 function playCorrectSound() {
-
+    const correctSound = document.getElementById("correct-sound")
+    correctSound.play()
 }
 
 //Function to play the wrong sound
 function playWrongSound() {
-
+    const wrongSound = document.getElementById("wrong-sound")
+    wrongSound.play()
 }
 
 // Function to start the game
 function startGame() {
   //hide the intro screen and show the game screen
- const introScreen = document.getElementById()
- const gameScreen = document.getElementById()
+ const introScreen = document.getElementById("intro-screen")
+ const gameScreen = document.getElementById("game-screen")
  introScreen.style.display = "none"
  gameScreen.style.display = "block"
 
