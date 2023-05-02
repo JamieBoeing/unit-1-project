@@ -1,0 +1,60 @@
+[
+    {
+        "question": "which Greek god is known as the king of gods?",
+        "options": ["Zeus", "Hades", "Poseidon", "Apollo"],
+        "answer": 0,
+        "theme": "Greek Mythology"
+    },
+    {
+        "question": "Who is the goddess of love and beauty in Greek mythology'?",
+        "options": ["Hera", "Athena", "Aphrodite", "Artemis"],
+        "answer": 2,
+        "theme": "Greek Mythology"
+    },
+    {
+        "question": "Which creature is part lion, part goat, and part serpent in Greek mythology",
+        "options": ["Centaur", "Harpy", "Chimera", "Minotaur"],
+        "answer": 2,
+        "theme": "Greek Mythology"
+    },
+    {
+        "question": "who is the ruler of the underworld in Greek mythology?",
+        "options": ["Zeus", "Hades", "Poseidon", "Hermes"],
+        "answer": 1,
+        "theme": "Greek Mythology"
+    },
+    {
+        "question": "which of the following is a unit of measurement for temperature?",
+        "options": ["Watt", "Volt", "Celsius", "Ampere"],
+        "answer": 2,
+        "theme": "Science"
+    },
+    {
+        "question": "what is the largest planet in our solar system?",
+        "options": ["Mars", "Saturn", "Jupiter", "Earth"],
+        "answer": 2,
+        "theme": "Science"
+    },
+    {
+        "question": "which of the following is a primary color?",
+        "options": ["Orange", "Green", "Yellow", "Purple"],
+        "answer": 2,
+        "theme": "Science"
+    },
+    {
+        "question": "what is the process by which plants convert sunlight into energy called?",
+        "options": ["Photosynthesis", "Respiration", "Transpiration", "Digestion"],
+        "answer": 0,
+        "theme": "Science"
+    },
+    {
+        "question": "which organ is responsible for pumping blood throughout the body?",
+        "options": ["Brain", "lungs", "Heart", "Liver"],
+        "answer": 2,
+        "theme": "Science"
+    }
+    // Add more questions...
+  ]
+  
+  
+  
