@@ -52,8 +52,67 @@
         "options": ["Brain", "lungs", "Heart", "Liver"],
         "answer": 2,
         "theme": "Science"
+    },
+    {
+        "question": "who was the first President of the United States?",
+        "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John F. Kennedy"],
+        "answer": 1,
+        "theme": "History"
+    },
+    {
+        "question": "which ancient civilization built the Great Wall of China?",
+        "options": ["Romans", "Egyptians", "Greeks", "Chinese"],
+        "answer": 3,
+        "theme": "History"
+    },
+    {
+        "question": "The Renaissance is known for its revival of interest in?",
+        "options": ["Science and technology", "Philosopy and religion", "Politics and warfare", "Art and culture"],
+        "answer": 3,
+        "theme": "History"
+    },
+    {
+        "question": "who wrote the famous play Romeo and Juliet?",
+        "options": ["William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain"],
+        "answer": 0,
+        "theme": "History"
+    },
+    {
+        "question": "In which year did World War II end?",
+        "options": ["1939", "1941", "1945", "1950"],
+        "answer": 2,
+        "theme": "History"
+    },
+    {
+        "question": "which artist is known for painting the Mona Lisa?",
+        "options": ["Pablo Picasso", "Vincent van Gogh", "Leonardo da Vinci", "Michelangelo"],
+        "answer": 2,
+        "theme": "Art & Music"
+    },
+    {
+        "question": "Who composed the Symphony No. 9 in D minor, also known as 'Ode to Joy'?",
+        "options": ["Ludwig van Beethoven", "Johann Sebastian Back", "Wolfgang Amadeus Mozart", "Franz Schubert"],
+        "answer": 0,
+        "theme": "Art & Music"
+    },
+    {
+        "question": "Which art movement was characterized by bright colors and bold brushstrokes?",
+        "options": ["Impressionism", "Cubism", "Surrealism", "Pop Art"],
+        "answer": 0,
+        "theme": "Art & Music"
+    },
+    {
+        "question": "Which instrument is typically played with a bow?",
+        "options": ["Guitar", "Piano", "Trumpet", "Violin"],
+        "answer": 3,
+        "theme": "Art & Music"
+    },
+    {
+        "question": "Who is the author of the famous play Romeo and Juliet",
+        "options": ["William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain"],
+        "answer": 0,
+        "theme": "Art & Music"
     }
-    // Add more questions...
   ]
   
   
