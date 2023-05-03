@@ -45,6 +45,18 @@ startBtn.addEventListener("click", startGame)
 
 // Function to load the next question
 function loadQuestion() {
+
+  const questionContainer = document.getElementById("question-container")
+  const questionEl = document.getElementById("question")
+  const choices = document.querySelectorAll(".choice")
+
+// check if necessary elements are available
+if (!questionContainer || !questionEl || choices.length === 0) {
+  console.log("Error: Missing required elements")
+  return
+}
+
+
   // Check if all questions in the current level have been answered
   if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
     // Move to the next level or end the game if all levels have been completed
@@ -62,16 +74,23 @@ function loadQuestion() {
     // Load the question and answer options...
   const question = questionData[currentLevel - 1].questions[currentQuestion]
 
-  const questionEl = document.getElementById("question")
+  if (!question) {
+    console.log("Erroar: Invalid question data")
+    return
+  }
+
   questionEl.textContent = question.question
 
-  const choices = document.querySelectorAll(".choice")
   choices.forEach((choice, index) => {
-    choice.textContent = question.options[index]
-    choice.addEventListener("click", () => answerQuestion(index))
+    choice.textContent = question.options?.[index]
+
+    // remove previous listener to prevent multiple listners on the same element
+    choice.removeEventListener("click", answerQuestion)
+
+    // add event listener to handle click on choice
+    choice.addEventListener("click", answerQuestion)
   })
 }
-
 // Function to handle answering a question
 function answerQuestion(choice) {
     const question = questionData[currentLevel - 1].questions[currentQuestion]

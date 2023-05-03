@@ -9,13 +9,14 @@
         <title>QuizBiz</title>
     </head>
     <body>
-        <div class="intro-screen">
+        <div id="intro-screen">
             <h1>Welcome to QuizBiz</h1>
             <h2> & the Quest for Knowledge</h2>
             <p>Are you Ready to test your knowledge?</p>
          <button id="start-btn">Start Quiz</button>
         </div>
-        <div id="game-screen" style="display: none;">
+       
+        <div id="game-screen" style="display: none">
             <div id="question-container">
                 <h2 id="question"></h2>
                 <div id="choices">
@@ -23,23 +24,29 @@
                     <button class="choice" id="choice2"></button>
                     <button class="choice" id="choice3"></button>
                     <button class="choice" id="choice4"></button>
+                 </div>
             </div>
         </div>
+        
         <div class="timer-container">
             <div id="timer"></div>
          </div>    
-        <div id="score-container">
+        
+         <div id="score-container">
             <h3>Score: <span id="score"></span></h3>
             <h3>Bonus Points: <span id="bonus-points"></span></h3>
         </div>
+       
         <div id="level-container">
             <h3>Level: <span id="level"></span></h3>
         </div>
+        
         <div id="game-over-screen">
             <h1>Game Over</h1>
             <h2>Your Final Score was <span id="final-score"></span></h2>
             <button id="play-again-btn">Play Again</button>
         </div>
+        
         <audio id="correct-sound">
             <source src="https://www.epidemicsound.com/track/brhYlZMhZI/" type="audio/mpeg">
         </audio>
