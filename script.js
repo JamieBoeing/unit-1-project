@@ -6,7 +6,6 @@ let score = 0
 let timeBonus = 0
 let levelBonus = 0
 let answers = []
-let achievements = []
 
 // Define question data as an empty array
 let questionData = []
@@ -23,6 +22,26 @@ function loadQuestionData() {
       console.log('Error loading question data:', error)
     })
 }
+
+// Function to start the game
+function startGame() {
+    // hide the intro screen and show the game screen
+    const introScreen = document.getElementById("intro-screen")
+    const gameScreen = document.getElementById("game-screen")
+    introScreen.style.display = "none"
+    gameScreen.style.display = "block"
+
+    // display the current level and score
+    displayLevel()
+    displayScore()
+
+    //load the first question
+    loadQuestion()
+}
+
+// add event listner for the start button
+const startBtn = document.getElementById("start-btn")
+startBtn.addEventListener("click", startGame)
 
 // Function to load the next question
 function loadQuestion() {
@@ -96,19 +115,15 @@ function playWrongSound() {
     wrongSound.play()
 }
 
-// Function to start the game
-function startGame() {
-  //hide the intro screen and show the game screen
- const introScreen = document.getElementById("intro-screen")
- const gameScreen = document.getElementById("game-screen")
- introScreen.style.display = "none"
- gameScreen.style.display = "block"
+// Function to end the game
+function endGame() {
+    //Hide the game screen and show the game over screen
+    const gameScreen = document.getElementById("game-screen")
+    const gameOverScreen = document.getElementById("game-over-screen")
+    gameScreen.style.display = "none"
+    gameOverScreen.style.display = "block"
 
- // Display the current level and score
-displayLevel()
-displayScore()
-
-// Load the first Question
-loadQuestion()
+    // display final score
+    const finalScoreEl = document.getElementById("final-score")
+    finalScoreEl.textContent = score
 }
-
