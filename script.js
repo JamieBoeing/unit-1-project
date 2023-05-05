@@ -3,9 +3,7 @@
 let currentLevel = 1
 let currentQuestion = 0
 let score = 0
-let timeBonus = 0
 let levelBonus = 0
-let answers = []
 
 // Define question data as an empty array
 let questionData = []
@@ -13,7 +11,7 @@ let questionData = []
 // Load the question data 
 function loadQuestionData() {
   // questions array
-  questions = [
+  const questions = [
     {
       "question": "which Greek god is known as the king of gods?",
       "options": ["Zeus", "Hades", "Poseidon", "Apollo"],
@@ -162,33 +160,31 @@ function loadQuestionData() {
 
   // Shuffle the questions array
   shuffleArray(questions)
-}
 
-// function to shuffle an array 
-function shuffleArray(array) {
-  for (let i = array.length -1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    [array[i], array[j]] = [array[j], array[i]]
-  }
+  questionData = questions
 }
 
 // Function to start the game
 function startGame() {
-    // hide the intro screen and show the game screen
+    // Hide the intro screen and show the game screen
     const introScreen = document.getElementById("intro-screen")
     const gameScreen = document.getElementById("game-screen")
+    if (!introScreen || !gameScreen) {
+      console.log("Error: Missing required elements")
+      return
+    }
     introScreen.style.display = "none"
     gameScreen.style.display = "block"
 
-    // display the current level and score
+    // Display the current level and score
     displayLevel()
     displayScore()
 
-    //load the first question
+    //Load the first question
     loadQuestion()
 }
 
-// add event listner for the start button
+// Add event listner for the start button
 const startBtn = document.getElementById("start-btn")
 startBtn.addEventListener("click", startGame)
 
@@ -199,7 +195,7 @@ function loadQuestion() {
   const questionEl = document.getElementById("question")
   const choices = document.querySelectorAll(".choice")
 
-// check if necessary elements are available
+// Check if necessary elements are available
 if (!questionContainer || !questionEl || choices.length === 0) {
   console.log("Error: Missing required elements")
   return
@@ -240,6 +236,7 @@ if (!questionContainer || !questionEl || choices.length === 0) {
     choice.addEventListener("click", answerQuestion)
   })
 }
+
 // Function to handle answering a question
 function answerQuestion(choice) {
     const question = questionData[currentLevel - 1].questions[currentQuestion]
@@ -288,6 +285,7 @@ function endGame() {
     //Hide the game screen and show the game over screen
     const gameScreen = document.getElementById("game-screen")
     const gameOverScreen = document.getElementById("game-over-screen")
+   
     gameScreen.style.display = "none"
     gameOverScreen.style.display = "block"
 
