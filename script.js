@@ -1,14 +1,14 @@
 // Set up variables for tracking game state
-let currentLevel = 1;
-let currentQuestion = 0;
-let score = 0;
-let timeBonus = 0;
-let levelBonus = 0;
-let answers = [];
-let achievements = [];
+let currentLevel = 1
+let currentQuestion =0
+let score = 0
+let timeBonus = 0
+let levelBonus = 0
+let answers = []
+let achievements = []
 
 // Define question data as an empty array
-let questionData = [];
+let questionData = []
 
 // Load the question data from a JSON file
 function loadQuestionData() {
@@ -16,7 +16,7 @@ function loadQuestionData() {
     .then(response => response.json())
     .then(data => {
       questionData = data;
-      startGame();
+      startGame()
     })
 }
 
@@ -52,11 +52,11 @@ function loadQuestion() {
   const question = questionData[currentLevel - 1].questions[currentQuestion]
 
   const questionEl = document.getElementById("question")
-  questionEl.textContent = question.question;
+  questionEl.textContent = question.question
 
   const choices = document.querySelectorAll(".choice")
   choices.forEach((choice, index) => {
-    choice.textContent = question.options[index];
+    choice.textContent = question.options[index]
     choice.addEventListener("click", () => answerQuestion(index))
   })
 }
@@ -76,7 +76,7 @@ function startTimer() {
 // Function to handle answering a question
 function answerQuestion(choice) {
   const question = questionData[currentLevel - 1].questions[currentQuestion]
-  const correctAnswer = question.answer;
+  const correctAnswer = question.answer
 
   // Check if selected choice is correct
   if (choice === correctAnswer) {
