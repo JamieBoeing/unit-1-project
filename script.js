@@ -1,17 +1,15 @@
 
 // Set up variables for tracking game state
-let currentLevel = 1
 let currentQuestion = 0
 let score = 0
-let levelBonus = 0
-
-// Define question data as an empty array
 let questionData = []
+let currentLevel = 0
+let levelBonus = 0
 
 // Load the question data 
 function loadQuestionData() {
   // questions array
-  const questions = [
+const questions = [
     {
       question: 'Which Greek god is known as the king of gods?',
       options: ['Zeus', 'Hades', 'Poseidon', 'Apollo'],
@@ -28,7 +26,7 @@ function loadQuestionData() {
       question: 'Which creature is part lion, part goat, and part serpent in Greek mythology?',
       options: ['Centaur', 'Harpy', 'Chimera', 'Minotaur'],
       answer: 2,
-      them: 'Greek Mythology'
+      theme: 'Greek Mythology'
   },
   {
       question: 'Who is the ruler of the underworld in Greek mythology?',
@@ -55,7 +53,7 @@ function loadQuestionData() {
       theme: 'Science'
   },
   {
-      questio: 'What is the process by which plants convert sunlight into energy called?',
+      question: 'What is the process by which plants convert sunlight into energy called?',
       options: ['Photosynthesis', 'Respiration', 'Transpiration', 'Digestion'],
       answer: 0,
       theme: 'Science'
@@ -157,11 +155,18 @@ function loadQuestionData() {
       theme: 'Pop Culture'
   }
   ]
-
-  // Shuffle the questions array
+//Shuffle the questions
   shuffleArray(questions)
 
-  questionData = questions
+  questionData = questions.slice(0, 10)
+}
+
+// Define the shuffleArray
+function shuffleQuestions() {
+  for (let i = questionData.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [questionData[i], questionData[j]] = [questionData[j], questionData[i]];
+  }
 }
 
 // Function to start the game
@@ -280,16 +285,45 @@ function playWrongSound() {
     wrongSound.play()
 }
 
+// Set the time limit for each question in seconds
+const timeLimit = 180
+let timeLeft = timeLimit
+
+
+// Create timer function
+function startTimer() {
+  // Display the initial time left
+console.log(`Time Left: ${timeLeft}s`)
+
+//Decrement the time left after every second
+const timer = setInterval(() => {
+  timeLeft--
+  console.log(`Time Left: ${timeLeft}s`)
+
+  //Check if the time has run out
+  if (timeLeft === 0) {
+    clearInterval(timer)
+    console.log(`Time's up!`)
+    //Add code to handle times up event
+    }
+  }, 1000)
+}
+startTimer()
+
+
 // Function to end the game
 function endGame() {
     //Hide the game screen and show the game over screen
     const gameScreen = document.getElementById('game-screen')
     const gameOverScreen = document.getElementById('game-over-screen')
-   
+    const finalScoreEl  = document.getElementById('final-score')
+    finalScoreEl.textContent = score + levelBonus
+
+
     gameScreen.style.display = 'none'
     gameOverScreen.style.display = "block"
 
-    // display final score
-    const finalScoreEl = document.getElementById('final-score')
-    finalScoreEl.textContent = score
+
+    const nextLevelButton = document.querySelector('#next-level-btn')
+    nextLevelButton.style.display = 'block'
 }
