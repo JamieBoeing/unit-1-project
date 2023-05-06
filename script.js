@@ -58,7 +58,24 @@ function startGame() {
 function startTimer() {
 
 }
+ function displayQuestion(question) {
+  const questionEl = document.getElementById("question")
+  const choicesEl = document.getElementById("choices")
+
+  //display the question text
+  questionEl.textContent = question.textContent
   
+  //clear any existing answer choices
+  choicesEl.innerHTML = ''
+
+  //display each answer choice as a button
+  question.choices.forEach(choice => {
+    const button = document.createElement("button")
+    button.textContent = choice
+    button.addEventListener('click', () => answerQuestion(choice))
+    choicesEl.appendChild(button)
+  })
+ } 
 
 // Function to handle answering a question
 function answerQuestion(choice, timeTaken) {
