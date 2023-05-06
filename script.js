@@ -31,6 +31,8 @@ function startGame() {
   introScreen.style.display = "none"
   gameScreen.style.display = "block"
 
+  //show question
+  displayQuestion()
   //Start the timer for time bonus
   startTimer()
 
