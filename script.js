@@ -3,18 +3,28 @@ let currentLevel = 1
 let currentQuestion =0
 let score = 0
 
+let questionData = 0
 // Load the question data from a JSON file
 function loadQuestionData() {
   fetch('questions.json')
-    .then(response => response.json())
-    .then(data => {
-      questionData = data;
+    .then((response) => response.json())
+    .then((data) => {
+      questionData = data
       startGame()
+
+// Add event listners to answer buttons
+const answerBtns = document.querySelectorAll("#game-screen btn")
+answerBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    answerQuestion(button.textContent)
+      })
     })
+  })
 }
 
 // Function to start the game
 function startGame() {
+
   // Hide the intro screen and show the game screen
   const introScreen = document.getElementById("intro-screen")
   const gameScreen = document.getElementById("game-screen")
@@ -23,7 +33,26 @@ function startGame() {
 
   //Start the timer for time bonus
   startTimer()
+
+  // Add event listeners to answer buttons
+  const answerA = document.getElementById("answer-a")
+  answerA.addEventListener("click", () => answerQuestion("a"))
+
+  const answerB = document.getElementById("answer-b");
+  answerB.addEventListener("click", () => answerQuestion("b"))
+
+  const answerC = document.getElementById("answer-c");
+  answerC.addEventListener("click", () => answerQuestion("c"))
+
+  const answerD = document.getElementById("answer-d");
+  answerD.addEventListener("click", () => answerQuestion("d"))
+
+  const startBtn = document.getElementById("start-btn")
+  startBtn.addEventListener("click", () => {
+    loadQuestionData()
+  })
 }
+
 
 //Function to start the timer for time bonus
 function startTimer() {
@@ -63,7 +92,24 @@ function answerQuestion(choice) {
   loadQuestionData()
   }
 }
-
+const messages = [
+  "The only true wisdom is in knowing you know nothing. - Socrates",
+  "Happiness is not something ready made. It comes from your own actions. - Dalai Lama",
+  "We are what we repeatedly do. Excellence, then, is not an act, but a habit. - Aristotle",
+  "I think, therefore I am. - René Descartes",
+  "The unexamined life is not worth living. - Socrates",
+  "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
+  "The only thing necessary for the triumph of evil is for good men to do nothing. - Edmund Burke",
+  "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment. - Ralph Waldo Emerson",
+  "We are all in the gutter, but some of us are looking at the stars. - Oscar Wilde",
+  "The mind is everything. What you think you become. - Buddha"
+]
+// Add messages for end game quotes
+function newQuote() {
+  const randomNumber = Math.floor(Math.random() * messages.length);
+  const message = messages[randomNumber];
+  console.log(message)
+}
 
 // Function to end the game
 function endGame() {
@@ -74,8 +120,8 @@ function endGame() {
   gameOverScreen.style.display = "block"
 
   // Display the final score and endgame message
-  const endGameMessage = `Game Over! Your final score is ${score}.`
-  displayMessage(endGameMessage)
+  const messageEl = document.getElementById("end-message")
+  messageEl.textContent = message
 
   //reset game state
   score = 0
