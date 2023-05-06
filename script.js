@@ -2,13 +2,6 @@
 let currentLevel = 1
 let currentQuestion =0
 let score = 0
-let timeBonus = 0
-let levelBonus = 0
-let answers = []
-let achievements = []
-
-// Define question data as an empty array
-let questionData = []
 
 // Load the question data from a JSON file
 function loadQuestionData() {
@@ -32,34 +25,6 @@ function startGame() {
   startTimer()
 }
 
-// Function to load the next question
-function loadQuestion() {
-  // Check if all questions in the current level have been answered
-  if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
-    // Move to the next level or end the game if all levels have been completed
-    if (currentLevel < questionData.length) {
-      currentLevel++
-      currentQuestion = 0
-      levelBonus += currentLevel * 10 // Add a bonus for completing a level, multiplied by the current level
-      displayLevel()
-    } else {
-      endGame() // End game if all levels have been completed
-      return
-    }
-  }
-
-  // Load the question and answer options...
-  const question = questionData[currentLevel - 1].questions[currentQuestion]
-
-  const questionEl = document.getElementById("question")
-  questionEl.textContent = question.question
-
-  const choices = document.querySelectorAll(".choice")
-  choices.forEach((choice, index) => {
-    choice.textContent = question.options[index]
-    choice.addEventListener("click", () => answerQuestion(index))
-  })
-}
 //Function to start the timer for time bonus
 function startTimer() {
   let timeLeft = 10
@@ -89,7 +54,38 @@ function answerQuestion(choice) {
 
   // Move to the next question
   currentQuestion++
-  loadQuestion()
+
+  // check if we've reached the end of the questions
+  if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
+  // end game logic here
+  endGame()
+} else {
+  loadQuestionData()
+  }
+}
+
+
+// Function to end the game
+function endGame() {
+  // Hide the game screen and show the game-over screen
+  const gameScreen = document.getElementById("game-screen")
+  const gameOverScreen = document.getElementById("game-over-screen")
+  gameScreen.style.display = "none"
+  gameOverScreen.style.display = "block"
+
+  // Display the final score and endgame message
+  const endGameMessage = `Game Over! Your final score is ${score}.`
+  displayMessage(endGameMessage)
+
+  //reset game state
+  score = 0
+  currentLevel = 1
+  currentQuestion = 0
+
+  // reload inital level and questions
+  loadQuestionData()
+    displayScore()
+    displayLevel() 
 }
 
 // Function to display the current level
@@ -104,12 +100,6 @@ function displayScore() {
   scoreEl.textContent = `Score: ${score}`
 }
 
-// Function to display the current level bonus
-function levelBonusEl() {
-  const levelBonusEl = document.getElementById("level-bonus")
-  levelBonusEl.textContent = `Level Bonus: ${levelBonusEl}`
-}
-
 // Function to play the correct sound
 function playCorrectSound() {
   const correctSound = document.getElementById("correct-sound")
@@ -122,16 +112,4 @@ function playWrongSound() {
   wrongSound.play()
 }
 
-// Function to end the game
-function endGame() {
-  // Hide the game screen and show the game-over screen
-  const gameScreen = document.getElementById("game-screen")
-  const gameOverScreen = document.getElementById("game-over-screen")
-  gameScreen.style.display = "none"
-  gameOverScreen.style.display = "block"
-
-  // Display the final score
-  const finalScoreEl = document.getElementById("final-score")
-  finalScoreEl.textContent = score
-}
 
