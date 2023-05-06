@@ -4,48 +4,43 @@
         <meta charset="utf-8">
         <meta name ="viewport" content="width=device-width, initial-scale=1.0">
         <script defer src="script.js"></script>
+        <script src="questions.json"></script>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <title>QuizBiz</title>
     </head>
     <body>
-        <div id="intro-screen">
+        <div class="intro-screen">
             <h1>Welcome to QuizBiz</h1>
             <h2> & the Quest for Knowledge</h2>
             <p>Are you Ready to test your knowledge?</p>
          <button id="start-btn">Start Quiz</button>
         </div>
-       
-        <div id="game-screen" style="display: none">
+        <div id="game-screen" style="display: none;">
+            <div id ="header">
+                <h2 id="level">Level: 1</h2>
+                <h2 id="score">Score: 0</h2>
+                <h2 id="time">Time: 10's</h2>
+            </div>
             <div id="question-container">
-                <h2 id="question"></h2>
-                <div id="choices">
-                    <button class="choice" id="choice1"></button>
-                    <button class="choice" id="choice2"></button>
-                    <button class="choice" id="choice3"></button>
-                    <button class="choice" id="choice4"></button>
-                 </div>
+                <h3 id="question"></h3>
+               <ul>
+                    <li><button class="choice" id="choice1"></button></li>
+                    <li><button class="choice" id="choice2"></button></li>
+                    <li><button class="choice" id="choice3"></button></li>
+                    <li><button class="choice" id="choice4"></button></li>
+                </ul>
             </div>
         </div>
-        
-        <div class="timer-container">
-            <div id="timer"></div>
-         </div>    
-        
-         <div id="score-container">
-            <h3>Score: <span id="score"></span></h3>
-            <h3>Bonus Points: <span id="bonus-points"></span></h3>
+
+        <div id ="bonus-container">
+            <h2 id="level-bonus"></h2>
+            <h2 id="time-bonus"></h2>
         </div>
-       
-        <div id="level-container">
-            <h3>Level: <span id="level"></span></h3>
-        </div>
-        
         <div id="game-over-screen">
             <h1>Game Over</h1>
             <h2>Your Final Score was <span id="final-score"></span></h2>
             <button id="play-again-btn">Play Again</button>
         </div>
-        
         <audio id="correct-sound">
             <source src="https://www.epidemicsound.com/track/brhYlZMhZI/" type="audio/mpeg">
         </audio>
@@ -56,4 +51,4 @@
             <source src="https://www.epidemicsound.com/track/vYh1z5UaTQ/" type="audio/mpeg">
         </audio>
     </body>
-</html>
+</html>   
