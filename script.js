@@ -2,15 +2,20 @@
 let currentLevel = 1
 let currentQuestion =0
 let score = 0
+let timer = 0
+let questionData = []
 
-let questionData = 0
-// Load the question data from a JSON file
-function loadQuestionData() {
-  fetch('questions.json')
-    .then((response) => response.json())
-    .then((data) => {
-      questionData = data
-      startGame()
+
+async function loadQuestionData() {
+  try {
+    const res = await fetch("questions.json")
+    const data = await res.json()
+    return data
+    } catch (err) {
+        console.error(err)
+    }
+  }
+
 
 // Add event listners to answer buttons
 const answerBtns = document.querySelectorAll("#game-screen btn")
@@ -19,20 +24,20 @@ answerBtns.forEach((button) => {
     answerQuestion(button.textContent)
       })
     })
-  })
-}
 
 // Function to start the game
-function startGame() {
-
+async function startGame() {
+  const questionData = await loadQuestionData()
+  console.log(questionData)
+  
   // Hide the intro screen and show the game screen
   const introScreen = document.getElementById("intro-screen")
   const gameScreen = document.getElementById("game-screen")
   introScreen.style.display = "none"
   gameScreen.style.display = "block"
-
+  
   //show question
-  displayQuestion()
+ 
   //Start the timer for time bonus
   startTimer()
 
@@ -49,36 +54,20 @@ function startGame() {
   const answerD = document.getElementById("answer-d")
   answerD.addEventListener("click", () => answerQuestion("d"))
 
-  const startBtn = document.getElementById("start-btn")
   startBtn.addEventListener("click", () => {
-    loadQuestionData()
+    questionData()
   })
 }
 
-
+const startBtn = document.getElementById("start-btn")
+startBtn.addEventListener('click', async function() {
+  await loadQuestionData()
+  startGame()
+})
 //Function to start the timer for time bonus
 function startTimer() {
 
 }
- function displayQuestion(question) {
-  const questionEl = document.getElementById("question")
-  const choicesEl = document.getElementById("choices")
-
-  //display the question text
-  questionEl.textContent = question.textContent
-  
-  //clear any existing answer choices
-  choicesEl.innerHTML = ''
-
-  //display each answer choice as a button
-  question.choices.forEach(choice => {
-    const button = document.createElement("button")
-    button.textContent = choice
-    button.addEventListener('click', () => answerQuestion(choice))
-    choicesEl.appendChild(button)
-  })
- } 
-
 // Function to handle answering a question
 function answerQuestion(choice, timeTaken) {
   clearInterval(timer)
@@ -97,7 +86,7 @@ function answerQuestion(choice, timeTaken) {
     playWrongSound()
     newQuote()
   }
-}
+
   // Move to the next question
   currentQuestion++
 
@@ -108,7 +97,7 @@ function answerQuestion(choice, timeTaken) {
 } else {
   loadQuestionData()
   }
-
+}
 const philosophers = [
   "The only true wisdom is in knowing you know nothing. - Socrates",
   "Happiness is not something ready made. It comes from your own actions. - Dalai Lama",
@@ -129,15 +118,14 @@ function newQuote() {
 
 // Function to end the game
 function endGame() {
-  // Hide the game screen and show the game-over screen
   const gameScreen = document.getElementById("game-screen")
   const gameOverScreen = document.getElementById("game-over-screen")
   gameScreen.style.display = "none"
   gameOverScreen.style.display = "block"
-// Show endgame message
- newQuote()
-
-  //reset game state
+  const quoteEl = document.getElementById("endgame-quote")
+  quoteEl.textContent = newQuote()
+  
+  //reset screen 
   score = 0
   currentLevel = 1
   currentQuestion = 0
