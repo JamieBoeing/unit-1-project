@@ -23,12 +23,14 @@
             </div>
             <div id="question-container">
                 <h3 id="question"></h3>
+                <div id="answers">
                <ul>
-                    <li><button class="choice" id="choice1"></button></li>
-                    <li><button class="choice" id="choice2"></button></li>
-                    <li><button class="choice" id="choice3"></button></li>
-                    <li><button class="choice" id="choice4"></button></li>
+                    <li><button id="answer-a"></button></li>
+                    <li><button id="answer-b"></button></li>
+                    <li><button id="answer-c"></button></li>
+                    <li><button id="answer-d"></button></li>
                 </ul>
+                </div>
             </div>
         </div>
 
@@ -38,6 +40,7 @@
         </div>
         <div id="game-over-screen">
             <h1>Game Over</h1>
+            <h2 id="end-message"></h2>
             <h2>Your Final Score was <span id="final-score"></span></h2>
             <button id="play-again-btn">Play Again</button>
         </div>

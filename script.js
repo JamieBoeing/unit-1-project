@@ -38,13 +38,13 @@ function startGame() {
   const answerA = document.getElementById("answer-a")
   answerA.addEventListener("click", () => answerQuestion("a"))
 
-  const answerB = document.getElementById("answer-b");
+  const answerB = document.getElementById("answer-b")
   answerB.addEventListener("click", () => answerQuestion("b"))
 
-  const answerC = document.getElementById("answer-c");
+  const answerC = document.getElementById("answer-c")
   answerC.addEventListener("click", () => answerQuestion("c"))
 
-  const answerD = document.getElementById("answer-d");
+  const answerD = document.getElementById("answer-d")
   answerD.addEventListener("click", () => answerQuestion("d"))
 
   const startBtn = document.getElementById("start-btn")
@@ -56,31 +56,29 @@ function startGame() {
 
 //Function to start the timer for time bonus
 function startTimer() {
-  let timeLeft = 10
-  const timeEl = document.getElementById("time")
-  timeEl.textContent = `Time: ${timeLeft}s`
-  const timerId = setInterval(() => {
-    timeLeft--
-    timeEl.textContent = `Time: ${timeLeft}s`
-    if (timeLeft === 0) {
-      clearInterval(timerId)
-    }
-  }, 1000)
+
 }
+  
+
 // Function to handle answering a question
-function answerQuestion(choice) {
+function answerQuestion(choice, timeTaken) {
+  clearInterval(timer)
   const question = questionData[currentLevel - 1].questions[currentQuestion]
   const correctAnswer = question.answer
 
   // Check if selected choice is correct
   if (choice === correctAnswer) {
-    score++;
+    score++
+    if (timeTaken <= 10) { // add bonus if time taken is less than 10 seconds
+      score += 5
+    }
     displayScore()
     playCorrectSound()
   } else {
     playWrongSound()
+    newQuote()
   }
-
+}
   // Move to the next question
   currentQuestion++
 
@@ -91,8 +89,8 @@ function answerQuestion(choice) {
 } else {
   loadQuestionData()
   }
-}
-const messages = [
+
+const philosophers = [
   "The only true wisdom is in knowing you know nothing. - Socrates",
   "Happiness is not something ready made. It comes from your own actions. - Dalai Lama",
   "We are what we repeatedly do. Excellence, then, is not an act, but a habit. - Aristotle",
@@ -106,9 +104,8 @@ const messages = [
 ]
 // Add messages for end game quotes
 function newQuote() {
-  const randomNumber = Math.floor(Math.random() * messages.length);
-  const message = messages[randomNumber];
-  console.log(message)
+  const randomIndex = Math.floor(Math.random() * philosophers.length)
+  return philosophers[randomIndex]
 }
 
 // Function to end the game
@@ -118,10 +115,8 @@ function endGame() {
   const gameOverScreen = document.getElementById("game-over-screen")
   gameScreen.style.display = "none"
   gameOverScreen.style.display = "block"
-
-  // Display the final score and endgame message
-  const messageEl = document.getElementById("end-message")
-  messageEl.textContent = message
+// Show endgame message
+ newQuote()
 
   //reset game state
   score = 0
