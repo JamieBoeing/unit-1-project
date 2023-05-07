@@ -1,3 +1,5 @@
+
+
 // Set up variables for tracking game state
 let currentLevel = 1
 let currentQuestion = 0
@@ -6,7 +8,7 @@ let questionData = []
 let questionTimer = null
 let timeLeft = 0
 let timerEl = document.querySelector("#timer") //select timer element
-
+let userAnswer = null 
 function startTimer() {
    // clear any existing timer intervals
    clearInterval(questionTimer)
@@ -26,15 +28,24 @@ timeLeft = 120
 }
 
 
-async function loadQuestionData() {
+const loadQuestionData = async () => {
   try {
-  const response = await fetch("questions.json")
-  questionData = await response.json() 
-  displayQuestion()
+  const res = await fetch("questions.json")
+  const data = await response.json() 
+  return data
 } catch (error) {
   console.error(error)
   }
 }
+
+loadQuestionData().then((questions) => {
+  const ulContainer = document.querySelector("ul")
+  ulContainer.innerHTML = questions
+  .map((question) => {
+    return `<li>${question.question} ${question.answer}</li>`
+  })
+  .join("")
+})
 
 // function to display the current question
 function displayQuestion() {
@@ -70,9 +81,13 @@ async function startGame() {
   introScreen.style.display = "none"
   gameScreen.style.display = "block"
   
-  
-  
-await loadQuestionData()
+// Shuffle the questions array to randomize the order
+questions = shuffleArray(questions)
+for (let i = 0; i < questions.length; i++){
+  console.log(`Question ${i+1}: ${questions[i].question}`)
+  console.log(`Options: ${questions[i].options.join(",")}`)
+  answerQuestion()
+  }
 }
 
 
@@ -184,9 +199,14 @@ answerC.addEventListener("click", () => answerQuestion("c"))
 const answerD = document.getElementById("answer-d")
 answerD.addEventListener("click", () => answerQuestion("d"))
 
-const startBtn = document.getElementById("start-btn")
+const startBtn = document.querySelector("#start-btn")
 startBtn.addEventListener("click", startGame)  
 
+const introScreen = document.querySelector("#intro-screen")
+
+startBtn.onclick = () => {
+  introScreen.textContent = "Clicked"
+}
 
 
 
