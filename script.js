@@ -8,7 +8,7 @@ let questionData = []
 let questionTimer = null
 let timeLeft = 0
 let timerEl = document.querySelector("#timer") //select timer element
-let userAnswer = null 
+
 function startTimer() {
    // clear any existing timer intervals
    clearInterval(questionTimer)
@@ -81,13 +81,9 @@ async function startGame() {
   introScreen.style.display = "none"
   gameScreen.style.display = "block"
   
-// Shuffle the questions array to randomize the order
-questions = shuffleArray(questions)
-for (let i = 0; i < questions.length; i++){
-  console.log(`Question ${i+1}: ${questions[i].question}`)
-  console.log(`Options: ${questions[i].options.join(",")}`)
-  answerQuestion()
-  }
+loadQuestionData()
+displayQuestion()
+answerQuestion()
 }
 
 
