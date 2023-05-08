@@ -1,12 +1,10 @@
 fetch("questions.json")
-.then(response => response.json())
+.then(res => res.json())
 .then(data => {
   console.log(data.questions)
   data.questions.forEach(question => {
 
-  
-
-// Set up variables for tracking game state
+  // Set up variables for tracking game state
 let currentLevel = 1
 let currentQuestion = 0
 let score = 0
@@ -89,7 +87,6 @@ function startGame() {
   
 loadQuestionData()
 displayQuestion()
-answerQuestion()
 }
 
 
@@ -205,10 +202,6 @@ const startBtn = document.querySelector("#start-btn")
 startBtn.addEventListener("click", startGame)  
 
 const introScreen = document.querySelector("#intro-screen")
-
-startBtn.onclick = () => {
-  introScreen.textContent = "Clicked"
-  }
 
   })
 })
