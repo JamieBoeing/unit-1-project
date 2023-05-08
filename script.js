@@ -1,4 +1,10 @@
+fetch("questions.json")
+.then(response => response.json())
+.then(data => {
+  console.log(data.questions)
+  data.questions.forEach(question => {
 
+  
 
 // Set up variables for tracking game state
 let currentLevel = 1
@@ -31,10 +37,10 @@ timeLeft = 120
 const loadQuestionData = async () => {
   try {
   const res = await fetch("questions.json")
-  const data = await response.json() 
+  const data = await res.json() 
   return data
 } catch (error) {
-  console.error(error)
+  return console.error(error)
   }
 }
 
@@ -42,7 +48,7 @@ loadQuestionData().then((questions) => {
   const ulContainer = document.querySelector("ul")
   ulContainer.innerHTML = questions
   .map((question) => {
-    return `<li>${question.question} ${question.answer}</li>`
+    return `<li>${question.question}? ${question.answer}</li>`
   })
   .join("")
 })
@@ -74,7 +80,7 @@ function displayQuestion() {
 
 
 // Function to start the game
-async function startGame() {
+function startGame() {
   // Hide the intro screen and show the game screen
   const introScreen = document.getElementById("intro-screen")
   const gameScreen = document.getElementById("game-screen")
@@ -202,7 +208,10 @@ const introScreen = document.querySelector("#intro-screen")
 
 startBtn.onclick = () => {
   introScreen.textContent = "Clicked"
-}
+  }
 
-
-
+  })
+})
+.catch(error => {
+  console.error(`Error retrieving questions`, error)
+})
