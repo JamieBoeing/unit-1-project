@@ -3,6 +3,17 @@ body {
     background-color: #f2f2f2;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+}
+ 
+ul > li {
+    list-style: none;
 }
 
 .container {

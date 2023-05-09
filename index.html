@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <script defer src="script.js"></script>
         <script src="questions.json"></script>
         <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -15,43 +16,30 @@
             <p>Are you Ready to test your knowledge?</p>
          <button id="start-btn">Start Quiz</button>
         </div>
-        <div id="game-screen" style="display: none;">
-            <div id ="header">
+        <div id="game-screen" style="display: none">
                 <h2 id="level">Level: 1</h2>
-                <h2 id="score">Score: 0</h2>
-                <h2 id="time">Time: 10's</h2>
-            </div>
-            <div id="question-container">
+                <h3 id="timer">Time: </h3>
+                <div id="question-container">
                 <h3 id="question"></h3>
-                <div id="answers">
-               <ul>
-                    <li><button id="answer-a"></button></li>
-                    <li><button id="answer-b"></button></li>
-                    <li><button id="answer-c"></button></li>
-                    <li><button id="answer-d"></button></li>
+                <ul id="options">
                 </ul>
-                </div>
             </div>
         </div>
-
-        <div id ="bonus-container">
-            <h2 id="level-bonus"></h2>
-            <h2 id="time-bonus"></h2>
-        </div>
-        <div id="game-over-screen">
+        <div class="game-over-screen">
             <h1>Game Over</h1>
-            <h2 id="end-message"></h2>
+            <p>Your score is:<span is="score"></span></p>
+            <p id="endgame-quote"></p>
             <h2>Your Final Score was <span id="final-score"></span></h2>
             <button id="play-again-btn">Play Again</button>
         </div>
         <audio id="correct-sound">
-            <source src="https://www.epidemicsound.com/track/brhYlZMhZI/" type="audio/mpeg">
+            <source src="" type="audio/mpeg">
         </audio>
         <audio id="wrong-sound">
-            <source src="https://www.epidemicsound.com/track/ObmggYiUYw/" type="audio/mpeg">
+            <source src="" type="audio/mpeg">
         </audio>
         <audio id="victory-sound">
-            <source src="https://www.epidemicsound.com/track/vYh1z5UaTQ/" type="audio/mpeg">
+            <source src="" type="audio/mpeg">
         </audio>
     </body>
 </html>   

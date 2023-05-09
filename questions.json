@@ -1,6 +1,7 @@
 [
-
     {
+    "questions": {
+    },
         "theme": "Greek Mythology",
         "question": "Which Greek god is known as the king of gods",
         "choices": ["Zeus", "Hades", "Poseidon", "Apollo"],
@@ -11,10 +12,14 @@
     {
         "theme": "Greek Mythology",
         "question": "Who is the goddess of love and beauty in Greek mythology",
-        "options": ["Hera", "Athena", "Aphrodite", "Artemis"],
-        "answer": "Aphrodite"
-    
-    },
+        "options": { 
+            "a": "Hera", 
+            "b": "Athena", 
+            "c":"Aphrodite", 
+            "d":"Artemis"
+            },
+        "answer": "c"
+        },
     {
         "theme": "Greek Mythology",
         "question": "Which creature is part lion, part goat, and part serpent in Greek mythology",

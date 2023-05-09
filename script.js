@@ -1,17 +1,26 @@
-fetch("questions.json")
-.then(res => res.json())
-.then(data => {
-  console.log(data.questions)
-  data.questions.forEach(question => {
+const loadQuestionData = async () => {
+  try {
+  const res = await fetch("questions.json")
+  const data = await res.json() 
+  return data
+} catch (error) {
+  return console.error(error)
+  }
+}
 
-  // Set up variables for tracking game state
+
+// Set up variables for tracking game state
 let currentLevel = 1
 let currentQuestion = 0
 let score = 0
 let questionData = []
-let questionTimer = null
+let questionTimer = 0
 let timeLeft = 0
-let timerEl = document.querySelector("#timer") //select timer element
+let timerEl = document.querySelector("#timer") 
+//select timer element
+let optionEls = []
+let questions = []
+
 
 function startTimer() {
    // clear any existing timer intervals
@@ -26,72 +35,58 @@ timeLeft = 120
     timerEl.innerHTML = `Time remaining: ${timeLeft} seconds`
     if (timeLeft === 0) {
       clearInterval()
-      answerQuestion(null, timeLeft) // call answer question with a null choice
+      answerQuestion(null, timeLeft) 
+      // call answer question with a null choice
     }
    }, 1000)
 }
 
 
-const loadQuestionData = async () => {
-  try {
-  const res = await fetch("questions.json")
-  const data = await res.json() 
-  return data
-} catch (error) {
-  return console.error(error)
-  }
-}
-
-loadQuestionData().then((questions) => {
-  const ulContainer = document.querySelector("ul")
-  ulContainer.innerHTML = questions
-  .map((question) => {
-    return `<li>${question.question}? ${question.answer}</li>`
-  })
-  .join("")
-})
 
 // function to display the current question
 function displayQuestion() {
-  const question = questionData[currentLevel - 1].questions[currentQuestion]
-  const questionEl = document.querySelector("#question")
-  questionEl.innerHTML = question.textContent
+  const questionEl = document.getElementById("question")
+  const optionsEl = document.getElementById("options")
 
-  const answerAE= document.querySelector("#answer-a")
-  answerAE.innerHTML = question.choices.a
-  answerAE.dataset.choice = "a"
 
-  const answerBE= document.querySelector("#answer-b")
-  answerBE.innerHTML = question.choices.b
-  answerBE.dataset.choice = "b"
+  // increment the counter
+  currentQuestion++
 
-  const answerCE= document.querySelector("#answer-c")
-  answerCE.innerHTML = question.choices.c
-  answerCE.dataset.choice = "c"
+ if (currentQuestion > 10) {
+  endGame()
+  return
+ }
 
-  const answerDE= document.querySelector("#answer-d")
-  answerDE.innerHTML = question.choices.d
-  answerDE.dataset.choice = "d"
-  startTimer() // start the timer when the question is displayed
+ // select a random question
+ const randomIndex = Math.floor(Math.random() * questions.length)
+ const question = questionData[randomIndex]
 
+ // display the question
+ questionEl.innerText = question.question
+ 
+ // clear any previous options
+ optionsEl.innerHTML = ""
+
+// Display the answer options
+for (let i = 0; i < question.options.length; i++) {
+  const optionEl = document.createElement("button")
+  optionEl.textContent = question.options[i]
+  optionEl.addEventListener("click", () => {
+    checkAnswer(question.options[i], timeLeft)
+  }) 
+  optionsEl.appendChild(optionEl)
+  }
 }
-
 
 // Function to start the game
 function startGame() {
-  // Hide the intro screen and show the game screen
-  const introScreen = document.getElementById("intro-screen")
-  const gameScreen = document.getElementById("game-screen")
-  introScreen.style.display = "none"
-  gameScreen.style.display = "block"
-  
-loadQuestionData()
-displayQuestion()
-}
+    console.log("Game Started!")
+    displayQuestion()
+    displayLevel()
+    startTimer()
+  }
 
-
-
-// Function to handle answering a question
+  // // Function to handle answering a question
 function answerQuestion(choice, timeTaken) {
   clearInterval(questionTimer)
   const question = questionData[currentLevel - 1].questions[currentQuestion]
@@ -100,7 +95,8 @@ function answerQuestion(choice, timeTaken) {
   // Check if selected choice is correct
   if (choice === correctAnswer) {
     score++
-    if (timeTaken <= 10) { // add bonus if time taken is less than 10 seconds
+    if (timeTaken <= 10) { 
+      // add bonus if time taken is less than 10 seconds
       score += 5
     }
     displayScore()
@@ -115,9 +111,13 @@ function answerQuestion(choice, timeTaken) {
   if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
     if (currentLevel >= questionData.length) {
       endGame()
-    }
 } else {
+  currentLevel++
+  displayLevel()
+  currentQuestion= 0
   displayQuestion()
+  startTimer()
+    }
   }
 }
 
@@ -135,11 +135,13 @@ function endGame() {
   currentLevel = 1
   currentQuestion = 0
 
-  // reload inital level and questions
-  loadQuestionData()
-  displayScore()
-  displayLevel() 
-}
+
+  //Load question data and display the first question 
+  loadQuestionData().then((questions) => {
+    questionData = questions
+    displayScore()
+    displayLevel()
+  })
 
 // end game message array
 const philosophers = [
@@ -182,29 +184,6 @@ function playCorrectSound() {
 function playWrongSound() {
   const wrongSound = document.getElementById("wrong-sound")
   wrongSound.play()
+  }
 }
 
-
-// Add event listeners to answer buttons
-const answerA = document.getElementById("answer-a")
-answerA.addEventListener("click", () => answerQuestion("a"))
-
-const answerB = document.getElementById("answer-b")
-answerB.addEventListener("click", () => answerQuestion("b"))
-
-const answerC = document.getElementById("answer-c")
-answerC.addEventListener("click", () => answerQuestion("c"))
-
-const answerD = document.getElementById("answer-d")
-answerD.addEventListener("click", () => answerQuestion("d"))
-
-const startBtn = document.querySelector("#start-btn")
-startBtn.addEventListener("click", startGame)  
-
-const introScreen = document.querySelector("#intro-screen")
-
-  })
-})
-.catch(error => {
-  console.error(`Error retrieving questions`, error)
-})
