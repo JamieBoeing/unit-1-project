@@ -1,189 +1,388 @@
-const loadQuestionData = async () => {
-  try {
-  const res = await fetch("questions.json")
-  const data = await res.json() 
-  return data
-} catch (error) {
-  return console.error(error)
+const questions = [
+  {
+    Question: "Who is the king of gods in Greek mythology?",
+    Answers: [
+      { text: "Zeus", correct: true },
+      { text: "Hades", correct: false },
+      { text: "Poseidon", correct: false },
+      { text: "Apollo", correct: false }
+    ]
+  },
+  {
+    Question: "Who is the goddess of love and beauty in Greek mythology?",
+    Answers: [
+      { text: "Hera", correct: false },
+      { text: "Athena", correct: false },
+      { text: "Aphrodite", correct: true },
+      { text: "Artemis", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Which creature is part lion, part goat, and part serpent in Greek mythology?",
+    Answers: [
+      { text: "Centaur", correct: false },
+      { text: "Harpy", correct: false },
+      { text: "Chimera", correct: true },
+      { text: "Minotaur", correct: false }
+    ]
+  },
+  {
+    Question: "Who is the ruler of the underworld in Greek mythology?",
+    Answers: [
+      { text: "Zeus", correct: false },
+      { text: "Hades", correct: true },
+      { text: "Poseidon", correct: false },
+      { text: "Hermes", correct: false }
+    ]
+  },
+  {
+    Question: "Who is the goddess of wisdom and warfare in Greek mythology?",
+    Answers: [
+      { text: "Hera", correct: false },
+      { text: "Athena", correct: true },
+      { text: "Aphrodite", correct: false },
+      { text: "Artemis", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Which of the following is a unit of measurement for temperature?",
+    Answers: [
+      { text: "Watt", correct: false },
+      { text: "Volt", correct: false },
+      { text: "Celsius", correct: true },
+      { text: "Ampere", correct: false }
+    ]
+  },
+  {
+    Question: "What is the largest planet in our solar system?",
+    Answers: [
+      { text: "Mars", correct: false },
+      { text: "Saturn", correct: false },
+      { text: "Jupiter", correct: true },
+      { text: "Earth", correct: false }
+    ]
+  },
+  {
+    Question: "Which of the following is a primary color?",
+    Answers: [
+      { text: "Orange", correct: false },
+      { text: "Green", correct: false },
+      { text: "Yellow", correct: true },
+      { text: "Purple", correct: false }
+    ]
+  },
+  {
+    Question:
+      "What is the process by which plants convert sunlight into energy called?",
+    Answers: [
+      { text: "Photosynthesis", correct: true },
+      { text: "Respiration", correct: false },
+      { text: "Transpiration", correct: false },
+      { text: "Digestion", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Which organ is responsible for pumping blood throughout the body?",
+    Answers: [
+      { text: "Brain", correct: false },
+      { text: "Lungs", correct: false },
+      { text: "Heart", correct: true },
+      { text: "Liver", correct: false }
+    ]
+  },
+  {
+    Question: "Who was the first President of the United States?",
+    Answers: [
+      { text: "Abraham Lincoln", correct: false },
+      { text: "George Washington", correct: true },
+      { text: "Thomas Jefferson", correct: false },
+      { text: "John F. Kennedy", correct: false }
+    ]
+  },
+  {
+    Question: "Which ancient civilization built the Great Wall of China?",
+    Answers: [
+      { text: "Romans", correct: false },
+      { text: "Egyptians", correct: false },
+      { text: "Greeks", correct: false },
+      { text: "Chinese", correct: true }
+    ]
+  },
+  {
+    Question: "The Renaissance is known for its revival of interest in?",
+    Answers: [
+      { text: "Science and technology", correct: false },
+      { text: "Philosophy and religion", correct: false },
+      { text: "Art and culture", correct: false }
+    ]
+  },
+  {
+    Question: "Who wrote the famous play Romeo and Juliet?",
+    Answers: [
+      { text: "William Shakespeare", correct: true },
+      { text: "Jane Austen", correct: false },
+      { text: "Charles Dickens", correct: false },
+      { text: "Mark Twain", correct: false }
+    ]
+  },
+  {
+    Question: "In which year did World War II end?",
+    Answers: [
+      { text: "1939", correct: false },
+      { text: "1941", correct: false },
+      { text: "1945", correct: true },
+      { text: "1950", correct: false }
+    ]
+  },
+  {
+    Question: "Which artist is known for painting the Mona Lisa?",
+    Answers: [
+      { text: "Pablo Picasso", correct: false },
+      { text: "Vincent van Gogh", correct: false },
+      { text: "Leonardo da Vinci", correct: true },
+      { text: "Michelangelo", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Who composed the Symphony No. 9 in D minor, also known as 'Ode to Joy'?",
+    Answers: [
+      { text: "Ludwig van Beethoven", correct: true },
+      { text: "Johann Sebastian Bach", correct: false },
+      { text: "Wolfgang Amadeus Mozart", correct: false },
+      { text: "Franz Schubert", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Which art movement was characterized by bright colors and bold brushstrokes?",
+    Answers: [
+      { text: "Cubism", correct: false },
+      { text: "Impressionism", correct: true },
+      { text: "Surrealism", correct: false },
+      { text: "Pop Art", correct: false }
+    ]
+  },
+  {
+    Question: "Which instrument is typically played with a bow?",
+    Answers: [
+      { text: "Guitar", correct: false },
+      { text: "Piano", correct: false },
+      { text: "Trumpet", correct: false },
+      { text: "Violin", correct: true }
+    ]
+  },
+  {
+    Question: "Who is the author of the famous play Romeo and Juliet?",
+    Answers: [
+      { text: "William Shakespeare", correct: true },
+      { text: "Jane Austen", correct: false },
+      { text: "Charles Dickens", correct: false },
+      { text: "Mark Twain", correct: false }
+    ]
+  },
+  {
+    Question:
+      "What is the name of the main character in the anime series 'Dragon Ball Z'?",
+    Answers: [
+      { text: "Goku", correct: true },
+      { text: "Naruto", correct: false },
+      { text: "Luffy", correct: false },
+      { text: "Ichigo", correct: false }
+    ]
+  },
+  {
+    Question: "Which video game franchise features the character Master Chief?",
+    Answers: [
+      { text: "Halo", correct: true },
+      { text: "Call of Duty", correct: false },
+      { text: "Assassin's Creed", correct: false },
+      { text: "Fallout", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Which actor played the character Jon Snow in the TV series 'Game of Thrones'?",
+    Answers: [
+      { text: "Kit Harington", correct: true },
+      { text: "Peter Dinklage", correct: false },
+      { text: "Emilia Clarke", correct: false },
+      { text: "Maisie Williams", correct: false }
+    ]
+  },
+  {
+    Question: "Who painted the famous artwork 'The Starry Night'?",
+    Answers: [
+      { text: "Pablo Picasso", correct: false },
+      { text: "Vincent van Gogh", correct: true },
+      { text: "Leonardo da Vinci", correct: false },
+      { text: "Michelangelo", correct: false }
+    ]
+  },
+  {
+    Question: "Who is the author of the famous novel 'Pride and Prejudice'?",
+    Answers: [
+      { text: "Jane Austen", correct: true },
+      { text: "Charlotte Brontë", correct: false },
+      { text: "Emily Dickinson", correct: false },
+      { text: "Virginia Woolf", correct: false }
+    ]
+  },
+  {
+    Question: "What is the largest organ in the human body?",
+    Answers: [
+      { text: "Brain", correct: false },
+      { text: "Lungs", correct: false },
+      { text: "Heart", correct: false },
+      { text: "Skin", correct: true }
+    ]
+  },
+  {
+    Question:
+      "What is the name of the main protagonist in the 'The Legend of Zelda' series?",
+    Answers: [
+      { text: "Link", correct: true },
+      { text: "Zelda", correct: false },
+      { text: "Ganondorf", correct: false },
+      { text: "Epona", correct: false }
+    ]
+  },
+  {
+    Question:
+      "Which actor portrayed Tony Stark/Iron Man in the Marvel Cinematic Universe?",
+    Answers: [
+      { text: "Chris Evans", correct: false },
+      { text: "Chris Hemsworth", correct: false },
+      { text: "Robert Downey Jr.", correct: true },
+      { text: "Mark Ruffalo", correct: false }
+    ]
+  },
+  {
+    Question: "Who painted the ceiling of the Sistine Chapel in Vatican City?",
+    Answers: [
+      { text: "Leonardo da Vinci", correct: false },
+      { text: "Raphael", correct: false },
+      { text: "Donatello", correct: false },
+      { text: "Michelangelo", correct: true }
+    ]
+  },
+  {
+    Question: "Which famous battle marked the end of the Napoleonic Wars?",
+    Answers: [
+      { text: "Battle of Waterloo", correct: true },
+      { text: "Battle of Gettysburg", correct: false },
+      { text: "Battle of Hastings", correct: false },
+      { text: "Battle of Stalingrad", correct: false }
+    ]
+  },
+  {
+    Question: "What is the chemical symbol for the element gold?",
+    Answers: [
+      { text: "Au", correct: true },
+      { text: "Ag", correct: false },
+      { text: "Fe", correct: false },
+      { text: "Hg", correct: false }
+    ]
+  },
+  {
+    Question: "Who is the god of the sea in Greek mythology?",
+    Answers: [
+      { text: "Zeus", correct: false },
+      { text: "Hades", correct: false },
+      { text: "Poseidon", correct: true },
+      { text: "Apollo", correct: false }
+    ]
   }
+];
+
+const startBtn = document.getElementById("start-btn");
+const questionEl = document.getElementById("question");
+const answerBtns = document.getElementById("answer-btns");
+const nextBtn = document.getElementById("next-btn");
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function startQuiz() {
+  startBtn.innerHTML = "Start";
+  startBtn.addEventListener("click", (e) => {
+    startBtn.style.display = "none";
+  });
+  currentQuestionIndex = 0;
+  score = 0;
+  nextBtn.innerHTML = "Next";
+  showQuestion();
 }
 
+function showQuestion() {
+  resetState();
+  let currentQuestion = questions[currentQuestionIndex];
+  let questionNo = currentQuestionIndex + 1;
+  questionEl.innerHTML = questionNo + "." + currentQuestion.question;
 
-// Set up variables for tracking game state
-let currentLevel = 1
-let currentQuestion = 0
-let score = 0
-let questionData = []
-let questionTimer = 0
-let timeLeft = 0
-let timerEl = document.querySelector("#timer") 
-//select timer element
-let optionEls = []
-let questions = []
-
-
-function startTimer() {
-   // clear any existing timer intervals
-   clearInterval(questionTimer)
-
-//set the time to the initial value
-timeLeft = 120
-
-   // set interval to count down the question time
-   questionTimer = setInterval(() => {
-    timeLeft--
-    timerEl.innerHTML = `Time remaining: ${timeLeft} seconds`
-    if (timeLeft === 0) {
-      clearInterval()
-      answerQuestion(null, timeLeft) 
-      // call answer question with a null choice
+  currentQuestion.answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerHTML = answer.text;
+    button.classList.add("btn");
+    answerBtns.appendChild(button);
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
     }
-   }, 1000)
+    button.addEventListener("click", selectAnswer);
+  });
 }
 
-
-
-// function to display the current question
-function displayQuestion() {
-  const questionEl = document.getElementById("question")
-  const optionsEl = document.getElementById("options")
-
-
-  // increment the counter
-  currentQuestion++
-
- if (currentQuestion > 10) {
-  endGame()
-  return
- }
-
- // select a random question
- const randomIndex = Math.floor(Math.random() * questions.length)
- const question = questionData[randomIndex]
-
- // display the question
- questionEl.innerText = question.question
- 
- // clear any previous options
- optionsEl.innerHTML = ""
-
-// Display the answer options
-for (let i = 0; i < question.options.length; i++) {
-  const optionEl = document.createElement("button")
-  optionEl.textContent = question.options[i]
-  optionEl.addEventListener("click", () => {
-    checkAnswer(question.options[i], timeLeft)
-  }) 
-  optionsEl.appendChild(optionEl)
+function resetState() {
+  nextBtn.style.display = "none";
+  startBtn.style.direction = "block";
+  while (answerBtns.firstChild) {
+    answerBtns.removeChild(answerBtns.firstChild);
   }
 }
 
-// Function to start the game
-function startGame() {
-    console.log("Game Started!")
-    displayQuestion()
-    displayLevel()
-    startTimer()
-  }
-
-  // // Function to handle answering a question
-function answerQuestion(choice, timeTaken) {
-  clearInterval(questionTimer)
-  const question = questionData[currentLevel - 1].questions[currentQuestion]
-  const correctAnswer = question.answer
-
-  // Check if selected choice is correct
-  if (choice === correctAnswer) {
-    score++
-    if (timeTaken <= 10) { 
-      // add bonus if time taken is less than 10 seconds
-      score += 5
-    }
-    displayScore()
-    playCorrectSound()
+function selectAnswer(e) {
+  const selectedBtn = e.target;
+  const isCorrect = selectedBtn.dataset.correct === "true";
+  if (isCorrect) {
+    selectedBtn.classList.add("correct");
+    score++;
   } else {
-    playWrongSound()
-    newQuote()
+    selectedBtn.classList.add("incorrect");
   }
-
-  // Move to the next question or level
-  currentQuestion++
-  if (currentQuestion >= questionData[currentLevel - 1].questions.length) {
-    if (currentLevel >= questionData.length) {
-      endGame()
-} else {
-  currentLevel++
-  displayLevel()
-  currentQuestion= 0
-  displayQuestion()
-  startTimer()
+  Array.from(answerBtns.children).forEach((button) => {
+    if (button.dataset.correct === "true") {
+      button.classList.add("correct");
     }
+    button.disabled = true;
+  });
+  nextBtn.style.display = "block";
+}
+
+function showScore() {
+  resetState();
+  questionEl.innerHTML = `You scored ${score} out of ${questions.length}`;
+  nextBtn.innerHTML = "Play Again!";
+  nextBtn.style.display = "block";
+}
+
+function handleNextButton(question) {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < question.length) {
+    showQuestion();
+  } else {
+    showScore();
   }
 }
 
-// Function to end the game
-function endGame() {
-  const gameScreen = document.getElementById("game-screen")
-  const gameOverScreen = document.getElementById("game-over-screen")
-  gameScreen.style.display = "none"
-  gameOverScreen.style.display = "block"
-  const quoteEl = document.getElementById("endgame-quote")
-  quoteEl.textContent = newQuote()
-  
-  //reset screen 
-  score = 0
-  currentLevel = 1
-  currentQuestion = 0
-
-
-  //Load question data and display the first question 
-  loadQuestionData().then((questions) => {
-    questionData = questions
-    displayScore()
-    displayLevel()
-  })
-
-// end game message array
-const philosophers = [
-  "The only true wisdom is in knowing you know nothing. - Socrates",
-  "Happiness is not something ready made. It comes from your own actions. - Dalai Lama",
-  "We are what we repeatedly do. Excellence, then, is not an act, but a habit. - Aristotle",
-  "I think, therefore I am. - René Descartes",
-  "The unexamined life is not worth living. - Socrates",
-  "In three words I can sum up everything I've learned about life: it goes on. - Robert Frost",
-  "The only thing necessary for the triumph of evil is for good men to do nothing. - Edmund Burke",
-  "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment. - Ralph Waldo Emerson",
-  "We are all in the gutter, but some of us are looking at the stars. - Oscar Wilde",
-  "The mind is everything. What you think you become. - Buddha"
-]
-// Add messages for end game quotes
-function newQuote() {
-  const randomIndex = Math.floor(Math.random() * philosophers.length)
-  return philosophers[randomIndex]
-}
-
-// Function to display the current level
-function displayLevel() {
-  const levelEl = document.getElementById("level")
-  levelEl.textContent = `Level: ${currentLevel}`
-}
-
-// Function to display the current score
-function displayScore() {
-  const scoreEl = document.getElementById("score")
-  scoreEl.textContent = `Score: ${score}`
-}
-
-// Function to play the correct sound
-function playCorrectSound() {
-  const correctSound = document.getElementById("correct-sound")
-  correctSound.play()
-}
-
-// Function to play the wrong sound
-function playWrongSound() {
-  const wrongSound = document.getElementById("wrong-sound")
-  wrongSound.play()
+nextBtn.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  } else {
+    startQuiz();
   }
-}
+});
 
+startQuiz();
