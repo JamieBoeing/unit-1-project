@@ -298,91 +298,83 @@ const questions = [
   }
 ];
 
-const startBtn = document.getElementById("start-btn");
-const questionEl = document.getElementById("question");
-const answerBtns = document.getElementById("answer-btns");
-const nextBtn = document.getElementById("next-btn");
+const startBtn = document.getElementById("start-btn")
+const questionEl = document.getElementById("question")
+const answerBtns = document.getElementById("answer-btns")
+const nextBtn = document.getElementById("next-btn")
 
-let currentQuestionIndex = 0;
-let score = 0;
+let currentQuestionIndex = 0
+let score = 0
+
+startBtn.addEventListener("click", startQuiz)
+nextBtn.addEventListener("click", () => {
+  currentQuestionIndex++
+  if (currentQuestionIndex < questions.length) {
+    showQuestion()
+  } else {
+    showScore()
+  }
+})
 
 function startQuiz() {
-  startBtn.innerHTML = "Start";
-  startBtn.addEventListener("click", (e) => {
-    startBtn.style.display = "none";
-  });
-  currentQuestionIndex = 0;
-  score = 0;
-  nextBtn.innerHTML = "Next";
-  showQuestion();
+   startBtn.style.display = "none"
+  currentQuestionIndex = 0
+  score = 0
+  showQuestion()
 }
 
 function showQuestion() {
-  resetState();
-  let currentQuestion = questions[currentQuestionIndex];
-  let questionNo = currentQuestionIndex + 1;
-  questionEl.innerHTML = questionNo + "." + currentQuestion.question;
+  resetState()
+  //show question random
+  let randomIndex = Math.floor(Math.random() * questions.length)
+  let currentQuestion = questions[randomIndex]
+  let questionNo = currentQuestionIndex + 1
+  questionEl.innerHTML = questionNo + "." + currentQuestion.question
 
   currentQuestion.answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-    button.classList.add("btn");
-    answerBtns.appendChild(button);
+    const button = document.createElement("button")
+    button.innerHTML = answer.text
+    button.classList.add("btn")
+    answerBtns.appendChild(button)
     if (answer.correct) {
-      button.dataset.correct = answer.correct;
+      button.dataset.correct = answer.correct
     }
-    button.addEventListener("click", selectAnswer);
-  });
+    button.addEventListener("click", selectAnswer)
+  })
 }
 
 function resetState() {
-  nextBtn.style.display = "none";
-  startBtn.style.direction = "block";
   while (answerBtns.firstChild) {
-    answerBtns.removeChild(answerBtns.firstChild);
+    answerBtns.removeChild(answerBtns.firstChild)
   }
+  nextBtn.style.display = "none"
 }
 
 function selectAnswer(e) {
-  const selectedBtn = e.target;
-  const isCorrect = selectedBtn.dataset.correct === "true";
+  const selectedBtn = e.target
+  const isCorrect = selectedBtn.dataset.correct === "true"
   if (isCorrect) {
-    selectedBtn.classList.add("correct");
+    selectedBtn.classList.add("correct")
     score++;
   } else {
-    selectedBtn.classList.add("incorrect");
+    selectedBtn.classList.add("incorrect")
   }
   Array.from(answerBtns.children).forEach((button) => {
     if (button.dataset.correct === "true") {
-      button.classList.add("correct");
+      button.classList.add("correct")
     }
-    button.disabled = true;
+    button.disabled = true
   });
-  nextBtn.style.display = "block";
+  nextBtn.style.display = "block"
 }
 
 function showScore() {
-  resetState();
-  questionEl.innerHTML = `You scored ${score} out of ${questions.length}`;
-  nextBtn.innerHTML = "Play Again!";
-  nextBtn.style.display = "block";
+  resetState()
+  questionEl.innerHTML = `You scored ${score} out of ${questions.length}`
+  nextBtn.innerHTML = "Play Again!"
+  nextBtn.style.display = "block"
 }
 
-function handleNextButton(question) {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < question.length) {
-    showQuestion();
-  } else {
-    showScore();
-  }
-}
 
-nextBtn.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length) {
-    handleNextButton();
-  } else {
-    startQuiz();
-  }
-});
 
-startQuiz();
+startQuiz()
