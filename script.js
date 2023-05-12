@@ -18,8 +18,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Which creature is part lion, part goat, and part serpent in Greek mythology?",
+    question: "Which creature is part lion, part goat, and part serpent in Greek mythology?",
     answers: [
       { text: "Centaur", correct: false },
       { text: "Harpy", correct: false },
@@ -546,7 +545,7 @@ function showQuestion() {
   let randomIndex = Math.floor(Math.random() * questions.length)
   let currentQuestion = questions[randomIndex]
   let questionNo = currentQuestionIndex + 1
-  questionEl.innerHTML = questionNo + "." + currentQuestion.question
+  questionEl.innerHTML = questionNo + ". " + currentQuestion.question
 
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button")
