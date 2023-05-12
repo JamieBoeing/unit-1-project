@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "Who is the king of gods in Greek mythology?",
-    Answers: [
+    answers: [
       { text: "Zeus", correct: true },
       { text: "Hades", correct: false },
       { text: "Poseidon", correct: false },
@@ -112,14 +112,6 @@ const questions = [
     ]
   },
   {
-    question: "The Renaissance is known for its revival of interest in?",
-    answers: [
-      { text: "Science and technology", correct: false },
-      { text: "Philosophy and religion", correct: false },
-      { text: "Art and culture", correct: false }
-    ]
-  },
-  {
     question: "Who wrote the famous play Romeo and Juliet?",
     answers: [
       { text: "William Shakespeare", correct: true },
@@ -176,7 +168,7 @@ const questions = [
     ]
   },
   {
-    Question: "Who is the author of the famous play Romeo and Juliet?",
+    question: "Who is the author of the famous play Romeo and Juliet?",
     Answers: [
       { text: "William Shakespeare", correct: true },
       { text: "Jane Austen", correct: false },
@@ -289,38 +281,274 @@ const questions = [
   },
   {
     question: "Who is the god of the sea in Greek mythology?",
-    Answers: [
+    answers: [
       { text: "Zeus", correct: false },
       { text: "Hades", correct: false },
       { text: "Poseidon", correct: true },
       { text: "Apollo", correct: false }
     ]
+  },
+  {
+    question: "What is the process of permanently inserting ink into the skin to create a design called?",
+    answers: [
+      { text: "Tattooing", correct: true },
+      { text: "Piercing", correct: false },
+      { text: "Scarification", correct: false },
+      { text: "Brandishing", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following is a technique where the skin is cut to create a raised scar design?",
+    answers: [
+      { text: "Dermal punching", correct: false },
+      { text: "Implanting", correct: false },
+      { text: "Scarification", correct: true },
+      { text: "Stretching", correct: false }
+    ]
+  },
+  {
+    question: "What type of body modification involves inserting jewelry into a hole made through a body part?",
+    answers: [
+      { text: "Tattooing", correct: false },
+      { text: "Piercing", correct: true },
+      { text: "Branding", correct: false },
+      { text: "Implanting", correct: false }
+    ]
+  },
+  {
+    question: "Which ancient culture is known for practicing body modification, including stretched earlobes and lip plates?",
+    answers: [
+      { text: "Mayans", correct: false },
+      { text: "Egyptians", correct: false },
+      { text: "Aztecs", correct: false },
+      { text: "Maasai", correct: true }
+    ]
+  },
+  {
+    question: "What is the term for the process of gradually enlarging a piercing hole using stretching jewelry?",
+    answers: [
+      { text: "Tattooing", correct: false },
+      { text: "Dermal punching", correct: false },
+      { text: "Scarification", correct: false },
+      { text: "Stretching", correct: true }
+    ]
+  },
+  {
+    question: "Which British rock band released the album 'The Dark Side of the Moon' in 1973?",
+    answers: [
+      { text: "Pink Floyd", correct: true },
+      { text: "Led Zeppelin", correct: false },
+      { text: "The Rolling Stones", correct: false },
+      { text: "The Who", correct: false }
+    ]
+  },
+  {
+    question: "Who is known as the 'King of Pop' and released the album 'Thriller' in 1982?",
+    answers: [
+      { text: "Michael Jackson", correct: true },
+      { text: "Prince", correct: false },
+      { text: "Madonna", correct: false },
+      { text: "Stevie Wonder", correct: false }
+    ]
+  },
+  {
+    question: "Which iconic rock band performed at the historic Live Aid concert in 1985?",
+    answers: [
+      { text: "Queen", correct: true },
+      { text: "The Beatles", correct: false },
+      { text: "The Eagles", correct: false },
+      { text: "The Beach Boys", correct: false }
+    ]
+  },
+  {
+    question: "Who released the hit single 'Smells Like Teen Spirit' in 1991?",
+    answers: [
+      { text: "Nirvana", correct: true },
+      { text: "Pearl Jam", correct: false },
+      { text: "Radiohead", correct: false },
+      { text: "Guns N' Roses", correct: false }
+    ]
+  },
+  {
+    question: "Which female artist won a record-breaking 28 Grammy Awards, including Album of the Year for '1989'?",
+    answers: [
+      { text: "Taylor Swift", correct: true },
+      { text: "Beyoncé", correct: false },
+      { text: "Adele", correct: false },
+      { text: "Rihanna", correct: false }
+    ]
+  },
+  {
+    question: "Which country won the FIFA World Cup in 2018?",
+    answers: [
+      { text: "France", correct: true },
+      { text: "Brazil", correct: false },
+      { text: "Germany", correct: false },
+      { text: "Argentina", correct: false }
+    ]
+  },
+  {
+    question: "Who holds the record for the most home runs hit in Major League Baseball (MLB) history?",
+    answers: [
+      { text: "Barry Bonds", correct: true },
+      { text: "Babe Ruth", correct: false },
+      { text: "Hank Aaron", correct: false },
+      { text: "Alex Rodriguez", correct: false }
+    ]
+  },
+  {
+    question: "Which basketball player won the most NBA championships in history?",
+    answers: [
+      { text: "Bill Russell", correct: true },
+      { text: "Michael Jordan", correct: false },
+      { text: "Magic Johnson", correct: false },
+      { text: "Kareem Abdul-Jabbar", correct: false }
+    ]
+  },
+  {
+    question: "Who holds the record for the most goals scored in a single NHL season?",
+    answers: [
+      { text: "Wayne Gretzky", correct: true },
+      { text: "Mario Lemieux", correct: false },
+      { text: "Bobby Orr", correct: false },
+      { text: "Jaromir Jagr", correct: false }
+    ]
+  },
+  {
+    question: "Which athlete has won the most Olympic gold medals in history?",
+    answers: [
+      { text: "Michael Phelps", correct: true },
+      { text: "Usain Bolt", correct: false },
+      { text: "Carl Lewis", correct: false },
+      { text: "Serena Williams", correct: false }
+    ]
+  }, 
+  {
+    question: "Which continent is the largest by land area?",
+    answers: [
+      { text: "Asia", correct: true },
+      { text: "Africa", correct: false },
+      { text: "North America", correct: false },
+      { text: "South America", correct: false }
+    ]
+  },
+  {
+    question: "What is the capital city of Australia?",
+    answers: [
+      { text: "Sydney", correct: false },
+      { text: "Melbourne", correct: false },
+      { text: "Canberra", correct: true },
+      { text: "Perth", correct: false }
+    ]
+  },
+  {
+    question: "Which river is the longest in the world?",
+    answers: [
+      { text: "Nile", correct: true },
+      { text: "Amazon", correct: false },
+      { text: "Mississippi", correct: false },
+      { text: "Yangtze", correct: false }
+    ]
+  },
+  {
+    question: "Which country is known as the 'Land of the Rising Sun'?",
+    answers: [
+      { text: "China", correct: false },
+      { text: "India", correct: false },
+      { text: "Japan", correct: true },
+      { text: "South Korea", correct: false }
+    ]
+  },
+  {
+    question: "What is the tallest mountain in the world?",
+    answers: [
+      { text: "Mount Kilimanjaro", correct: false },
+      { text: "Mount Everest", correct: true },
+      { text: "Mount McKinley", correct: false },
+      { text: "Mount Fuji", correct: false }
+    ]
+  },
+  {
+    question: "Who was the first woman to win a Nobel Prize?",
+    answers: [
+      { text: "Marie Curie", correct: true },
+      { text: "Rosa Parks", correct: false },
+      { text: "Amelia Earhart", correct: false },
+      { text: "Jane Austen", correct: false }
+    ]
+  },
+  {
+    question: "Who is often credited as the founder of modern nursing?",
+    answers: [
+      { text: "Florence Nightingale", correct: true },
+      { text: "Harriet Tubman", correct: false },
+      { text: "Coco Chanel", correct: false },
+      { text: "Indira Gandhi", correct: false }
+    ]
+  },
+  {
+    question: "Who is the author of the book 'To Kill a Mockingbird'?",
+    answers: [
+      { text: "Maya Angelou", correct: false },
+      { text: "Virginia Woolf", correct: false },
+      { text: "Harper Lee", correct: true },
+      { text: "Emily Dickinson", correct: false }
+    ]
+  },
+  {
+    question: "Who was the first female Prime Minister of the United Kingdom?",
+    answers: [
+      { text: "Margaret Thatcher", correct: true },
+      { text: "Angela Merkel", correct: false },
+      { text: "Jacinda Ardern", correct: false },
+      { text: "Golda Meir", correct: false }
+    ]
+  },
+  {
+    question: "Who is known as the 'Queen of Soul'?",
+    answers: [
+      { text: "Aretha Franklin", correct: true },
+      { text: "Ella Fitzgerald", correct: false },
+      { text: "Nina Simone", correct: false },
+      { text: "Billie Holiday", correct: false }
+    ]
   }
-];
 
-const startBtn = document.getElementById("start-btn")
+]
+
+const startBtn = document.getElementById("start-btn").style.display = "block"
+startBtn.addEventListener("click", startQuiz)
+const questionElContainer = document.getElementById("question-container")
 const questionEl = document.getElementById("question")
 const answerBtns = document.getElementById("answer-btns")
 const nextBtn = document.getElementById("next-btn")
+const playAgainBtn = document.getElementById("play-again-btn")
+playAgainBtn.addEventListener("click", resetQuiz)
 
 let currentQuestionIndex = 0
 let score = 0
 
-startBtn.addEventListener("click", startQuiz)
+
+
+
 nextBtn.addEventListener("click", () => {
   currentQuestionIndex++
-  if (currentQuestionIndex < questions.length) {
-    showQuestion()
-  } else {
+  if (currentQuestionIndex >= questions.length || currentQuestionIndex >= 10) {
     showScore()
+  } else {
+    showQuestion()
   }
 })
 
+playAgainBtn.addEventListener("click", resetQuiz)
+
 function startQuiz() {
-   startBtn.style.display = "none"
+  startBtn.classList.add(("hide"))
+  questionElContainer.classList.remove("hide")
   currentQuestionIndex = 0
   score = 0
   showQuestion()
+ 
 }
 
 function showQuestion() {
@@ -341,13 +569,17 @@ function showQuestion() {
     }
     button.addEventListener("click", selectAnswer)
   })
+ 
+  
 }
 
 function resetState() {
   while (answerBtns.firstChild) {
     answerBtns.removeChild(answerBtns.firstChild)
   }
-  nextBtn.style.display = "none"
+  nextBtn.style.display = "block"
+  startBtn.style.display = "block"
+  answerBtns.style.display = "block"
 }
 
 function selectAnswer(e) {
@@ -355,7 +587,7 @@ function selectAnswer(e) {
   const isCorrect = selectedBtn.dataset.correct === "true"
   if (isCorrect) {
     selectedBtn.classList.add("correct")
-    score++;
+    score++
   } else {
     selectedBtn.classList.add("incorrect")
   }
@@ -364,16 +596,32 @@ function selectAnswer(e) {
       button.classList.add("correct")
     }
     button.disabled = true
-  });
+  })
   nextBtn.style.display = "block"
 }
 
 function showScore() {
   resetState()
-  questionEl.innerHTML = `You scored ${score} out of ${questions.length}`
+  questionEl.innerHTML = `You scored ${score} out of ${Math.min(questions.length, 10
+    )} questions`
   nextBtn.innerHTML = "Play Again!"
   nextBtn.style.display = "block"
 }
+// game state reset
+function resetQuiz() {
+  currentQuestionIndex = 0
+  score = 0
+  showQuestion()
+
+  playAgainBtn.style.visibility = "hidden"
+  resetAnswerBtns()
+}
+  function resetAnswerBtns() {
+    answerBtns.forEach(button => {
+      button.disabled = false
+      button.classList.remove("correct", "incorrect")
+    })
+  }
 
 
 
