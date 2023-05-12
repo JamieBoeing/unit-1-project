@@ -46,8 +46,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Which of the following is a unit of measurement for temperature?",
+    question: "Which of the following is a unit of measurement for temperature?",
     answers: [
       { text: "Watt", correct: false },
       { text: "Volt", correct: false },
@@ -74,8 +73,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "What is the process by which plants convert sunlight into energy called?",
+    question: "What is the process by which plants convert sunlight into energy called?",
     answers: [
       { text: "Photosynthesis", correct: true },
       { text: "Respiration", correct: false },
@@ -84,8 +82,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Which organ is responsible for pumping blood throughout the body?",
+    question: "Which organ is responsible for pumping blood throughout the body?",
     answers: [
       { text: "Brain", correct: false },
       { text: "Lungs", correct: false },
@@ -139,8 +136,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Who composed the Symphony No. 9 in D minor, also known as 'Ode to Joy'?",
+    question: "Who composed the Symphony No. 9 in D minor, also known as 'Ode to Joy'?",
     answers: [
       { text: "Ludwig van Beethoven", correct: true },
       { text: "Johann Sebastian Bach", correct: false },
@@ -149,8 +145,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Which art movement was characterized by bright colors and bold brushstrokes?",
+    question: "Which art movement was characterized by bright colors and bold brushstrokes?",
     answers: [
       { text: "Cubism", correct: false },
       { text: "Impressionism", correct: true },
@@ -169,7 +164,7 @@ const questions = [
   },
   {
     question: "Who is the author of the famous play Romeo and Juliet?",
-    Answers: [
+    answers: [
       { text: "William Shakespeare", correct: true },
       { text: "Jane Austen", correct: false },
       { text: "Charles Dickens", correct: false },
@@ -177,8 +172,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "What is the name of the main character in the anime series 'Dragon Ball Z'?",
+    question: "What is the name of the main character in the anime series 'Dragon Ball Z'?",
     answers: [
       { text: "Goku", correct: true },
       { text: "Naruto", correct: false },
@@ -196,8 +190,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Which actor played the character Jon Snow in the TV series 'Game of Thrones'?",
+    question: "Which actor played the character Jon Snow in the TV series 'Game of Thrones'?",
     answers: [
       { text: "Kit Harington", correct: true },
       { text: "Peter Dinklage", correct: false },
@@ -233,8 +226,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "What is the name of the main protagonist in the 'The Legend of Zelda' series?",
+    question: "What is the name of the main protagonist in the 'The Legend of Zelda' series?",
     answers: [
       { text: "Link", correct: true },
       { text: "Zelda", correct: false },
@@ -243,8 +235,7 @@ const questions = [
     ]
   },
   {
-    question:
-      "Which actor portrayed Tony Stark/Iron Man in the Marvel Cinematic Universe?",
+    question: "Which actor portrayed Tony Stark/Iron Man in the Marvel Cinematic Universe?",
     answers: [
       { text: "Chris Evans", correct: false },
       { text: "Chris Hemsworth", correct: false },
@@ -516,39 +507,37 @@ const questions = [
 
 ]
 
-const startBtn = document.getElementById("start-btn").style.display = "block"
-startBtn.addEventListener("click", startQuiz)
-const questionElContainer = document.getElementById("question-container")
+const startBtn = document.getElementById("start-btn")
 const questionEl = document.getElementById("question")
 const answerBtns = document.getElementById("answer-btns")
 const nextBtn = document.getElementById("next-btn")
-const playAgainBtn = document.getElementById("play-again-btn")
-playAgainBtn.addEventListener("click", resetQuiz)
+
+
 
 let currentQuestionIndex = 0
 let score = 0
 
 
 
-
+startBtn.addEventListener("click",  startQuiz)
 nextBtn.addEventListener("click", () => {
   currentQuestionIndex++
   if (currentQuestionIndex >= questions.length || currentQuestionIndex >= 10) {
     showScore()
   } else {
     showQuestion()
-  }
+  } 
 })
 
-playAgainBtn.addEventListener("click", resetQuiz)
+
 
 function startQuiz() {
-  startBtn.classList.add(("hide"))
-  questionElContainer.classList.remove("hide")
+  startBtn.style.display = "none"
+  answerBtns.classList.remove = ("hide")
+  questionEl.classList.remove = ("hide")
   currentQuestionIndex = 0
   score = 0
   showQuestion()
- 
 }
 
 function showQuestion() {
@@ -568,6 +557,7 @@ function showQuestion() {
       button.dataset.correct = answer.correct
     }
     button.addEventListener("click", selectAnswer)
+    answerBtns.appendChild(button)
   })
  
   
@@ -578,8 +568,6 @@ function resetState() {
     answerBtns.removeChild(answerBtns.firstChild)
   }
   nextBtn.style.display = "block"
-  startBtn.style.display = "block"
-  answerBtns.style.display = "block"
 }
 
 function selectAnswer(e) {
@@ -598,6 +586,7 @@ function selectAnswer(e) {
     button.disabled = true
   })
   nextBtn.style.display = "block"
+  questionEl.style.display = "block"
 }
 
 function showScore() {
@@ -605,24 +594,15 @@ function showScore() {
   questionEl.innerHTML = `You scored ${score} out of ${Math.min(questions.length, 10
     )} questions`
   nextBtn.innerHTML = "Play Again!"
+  nextBtn.addEventListener("click", playAgain)
   nextBtn.style.display = "block"
 }
-// game state reset
-function resetQuiz() {
+
+function  playAgain() {
   currentQuestionIndex = 0
   score = 0
   showQuestion()
-
-  playAgainBtn.style.visibility = "hidden"
-  resetAnswerBtns()
+  nextBtn.innerHTML = "Next"
 }
-  function resetAnswerBtns() {
-    answerBtns.forEach(button => {
-      button.disabled = false
-      button.classList.remove("correct", "incorrect")
-    })
-  }
-
-
 
 startQuiz()
