@@ -81,3 +81,4 @@ add more to the game over all
 add a start button and intro screen
 add levels and score bonus
 the questions repeat sometimes so that needs to be updated
+adding sounds to the correct answers
