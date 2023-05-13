@@ -70,7 +70,7 @@ multiple choice questions with immediate feedback.
 core tracking.
 randomized question order.
 
-5. Screenshots
+5. Screenshots - see image folder 
 
 
 
