@@ -4,12 +4,11 @@ A simple quiz application built with HTML, CSS, and JavaScript.
 QuizBowl Game
 
 // My son is super smart, an AP honor student, and a captain on his QuizBowl Team 
-and I wanted to write a game dedicated to him
+and I wanted to write a game dedicated to him. 
 
 
-This Game is going to be multiple choice, and have some kind of 
-bonus point system for time answered correct. I considered making levels
-or making a story line to the game, but I may just keep it simple
+This Game is gmultiple choice, includes my sons speciality catagories, some of his interests 
+and a shout out to my Etsy team I included anime and video game catagories.
 
 //define variables
 1. Data [objects] to store answers, and questions
@@ -47,7 +46,6 @@ The Quiz App is a web-based application that allows users to take quizzes on var
 - [Features](#features)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [License](#license)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgments)
 
