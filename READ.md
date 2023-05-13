@@ -35,21 +35,11 @@ and a shout out to my Etsy team I included anime and video game catagories.
 
 
 
-## Description
+Description
 
 The Quiz App is a web-based application that allows users to take quizzes on various topics. It presents multiple-choice questions and provides immediate feedback on the user's responses. The app keeps track of the score and displays it at the end of the quiz.
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgments)
-
-## Installation
+Installation
 
 1. Clone the repository:
 
