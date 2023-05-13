@@ -1,3 +1,5 @@
+
+// question array
 const questions = [
   {
     question: "Who is the king of gods in Greek mythology?",
@@ -505,19 +507,19 @@ const questions = [
   }
 
 ]
-
+// elements 
 const startBtn = document.getElementById("start-btn")
 const questionEl = document.getElementById("question")
 const answerBtns = document.getElementById("answer-btns")
 const nextBtn = document.getElementById("next-btn")
 
 
-
+// variables for game state
 let currentQuestionIndex = 0
 let score = 0
 
 
-
+// button listeners to start and next question
 startBtn.addEventListener("click",  startQuiz)
 nextBtn.addEventListener("click", () => {
   currentQuestionIndex++
@@ -529,7 +531,7 @@ nextBtn.addEventListener("click", () => {
 })
 
 
-
+// start quiz button function
 function startQuiz() {
   startBtn.style.display = "none"
   answerBtns.classList.remove = ("hide")
@@ -539,6 +541,7 @@ function startQuiz() {
   showQuestion()
 }
 
+//show question function 
 function showQuestion() {
   resetState()
   //show question random
@@ -547,6 +550,7 @@ function showQuestion() {
   let questionNo = currentQuestionIndex + 1
   questionEl.innerHTML = questionNo + ". " + currentQuestion.question
 
+  // answers create buttons and adds each text
   currentQuestion.answers.forEach((answer) => {
     const button = document.createElement("button")
     button.innerHTML = answer.text
@@ -562,6 +566,8 @@ function showQuestion() {
   
 }
 
+
+// reset buttons
 function resetState() {
   while (answerBtns.firstChild) {
     answerBtns.removeChild(answerBtns.firstChild)
@@ -569,6 +575,7 @@ function resetState() {
   nextBtn.style.display = "block"
 }
 
+// select and check answer for correct or incorrect
 function selectAnswer(e) {
   const selectedBtn = e.target
   const isCorrect = selectedBtn.dataset.correct === "true"
@@ -588,6 +595,7 @@ function selectAnswer(e) {
   questionEl.style.display = "block"
 }
 
+//show score and question amount
 function showScore() {
   resetState()
   questionEl.innerHTML = `You scored ${score} out of ${Math.min(questions.length, 10
@@ -597,6 +605,7 @@ function showScore() {
   nextBtn.style.display = "block"
 }
 
+// play again button function to the next button 
 function  playAgain() {
   currentQuestionIndex = 0
   score = 0
@@ -604,4 +613,5 @@ function  playAgain() {
   nextBtn.innerHTML = "Next"
 }
 
+// start quiz
 startQuiz()
