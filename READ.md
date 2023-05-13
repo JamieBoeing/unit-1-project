@@ -74,3 +74,10 @@ Create a new branch: git checkout -b my-new-branch
 Make your changes and commit them: git commit -m 'Add some feature'
 Push to the branch: git push origin my-new-branch
 Submit a pull request.
+
+
+7. TO do
+add more to the game over all 
+add a start button and intro screen
+add levels and score bonus
+the questions repeat sometimes so that needs to be updated
