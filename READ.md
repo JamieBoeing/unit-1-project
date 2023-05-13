@@ -76,7 +76,7 @@ Push to the branch: git push origin my-new-branch
 Submit a pull request.
 
 
-7. TO do
+7. To do
 add more to the game over all 
 add a start button and intro screen
 add levels and score bonus
