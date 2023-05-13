@@ -1,6 +1,40 @@
 # Quiz App
 
 A simple quiz application built with HTML, CSS, and JavaScript.
+QuizBowl Game
+
+// My son is super smart, an AP honor student, and a captain on his QuizBowl Team 
+and I wanted to write a game dedicated to him
+
+
+This Game is going to be multiple choice, and have some kind of 
+bonus point system for time answered correct. I considered making levels
+or making a story line to the game, but I may just keep it simple
+
+//define variables
+1. Data [objects] to store answers, and questions
+
+// define questions array
+2. random questions function(fetch)
+//add more questions 
+
+//Start the game
+3. display questions function()
+
+//bonus points if they answer within the alloted time
+4. Timer function()bonus points()set timeout
+
+//check answer with a loop 
+5. check answers function()
+//correct/incorrect messages
+
+/update
+6. Update score function()
+
+//end the game when score max reached or question count (not sure yet)
+7. Endgame function
+
+
 
 ## Description
 
